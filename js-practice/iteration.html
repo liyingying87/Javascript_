@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //ES5
+  let collection =['foo','bar','baz'];
+  collection.forEach((item)=>console.log(item));
+//但是这个，没有办法标记迭代何时结束，因此此种方式只适用于数组，而且回调结构也比较笨拙。
+let num =1;
+console.log(num[Symbol.iterator]);
+  console.log(collection[Symbol.iterator]);
+//判断是都存在默认的迭代器属性可以暴露这个工厂函数
+  //迭代器
+  let iter =collection[Symbol.iterator]();
+  console.log(iter);
+  console.log(iter.next());
+  console.log(iter.next());
+  console.log(iter.next());
+  console.log(iter.next());
+  class Foo {
+  [Symbol.iterator](){
+    return{
+      next(){
+        return {
+          done:false,value:'foo'
+        };
+      }
+    }
+    }
+  }
+  let f= new Foo();
+  console.log(f[Symbol.iterator]());
+  // class Counter{
+  //   //counter的实例应该迭代limit次
+  //   constructor(limit) {
+  //     this.count =1;
+  //     this.limit = limit;
+  //   }
+  //   next(){
+  //     if(this.count<=this.limit){
+  //       return {
+  //         done: false,value: this.count++
+  //       };
+  //     }
+  //     else
+  //     {
+  //       return {
+  //         done: true,value: undefined
+  //       };
+  //     }
+  //   }
+  //   [Symbol.iterator](){
+  //     return this;
+  //   }
+  // }
+  //
+  // let counter = new Counter(3);
+  // //for of 会按照可迭代对象的next方法产生值的顺序迭代元素
+  // for(let i of counter){
+  //   console.log(i);
+  // }
+  // for(let i of counter){
+  //   console.log(i);
+  // }
+  //第二次无输出了就，这个实例只可以被迭代一次。
+
+  class Counter2{
+    //counter的实例应该迭代limit次
+    constructor(limit) {
+      this.limit = limit;
+    }
+    [Symbol.iterator](){
+      let count =1,limit = this.limit;
+      return {
+        next(){
+          if(count <= limit){
+            return {
+              done: false,value: count++
+            };
+          }
+          else
+          {
+            return {
+              done: true,value: undefined
+            };
+          }
+        }
+      };
+    }
+  }
+  let counter2 =new Counter2(3);
+  for (let i of counter2)
+  {
+      console.log(i);
+  }
+  for (let i of counter2)
+  {
+      console.log(i);
+  }
+</script>
+</body>
+</html>
