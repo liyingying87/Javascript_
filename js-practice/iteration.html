@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>学习js书中第七章迭代器和生成器</title>
 </head>
 <body>
 <script>
@@ -88,11 +88,19 @@ console.log(num[Symbol.iterator]);
               done: true,value: undefined
             };
           }
-        }
+        },
+          //提前终止迭代迭代器
+          return(){
+            console.log("提前终止");
+            return{
+                done:true
+            };
+          }
       };
     }
   }
   let counter2 =new Counter2(3);
+  let [a,b] = counter2;
   for (let i of counter2)
   {
       console.log(i);
@@ -100,6 +108,30 @@ console.log(num[Symbol.iterator]);
   for (let i of counter2)
   {
       console.log(i);
+  }
+  for (let i of counter2)
+  {
+      if(i>2){
+          break;
+      }
+      console.log(i);
+  }
+//yield实现输入和输出
+  function * gengeratorFn (init){
+      console.log(init);
+      console.log(yield);
+      console.log(yield);
+  }
+  let generatorObject = gengeratorFn('foo');
+  generatorObject.next('bar');//foo 第一次next调用的值不会被使用，因为目的是开始执行生成器函数
+  generatorObject.next('baz');//上一次让生成器函数暂停的yield关键字会接收到传给next方法的第一个值
+  generatorObject.next('qux');
+  //yield*的值
+  function * gengeratorFn1 (){
+      console.log('iter value',yield *[1,2,3]);
+  }
+  for(const x of gengeratorFn1()){
+      console.log('value',x);
   }
 </script>
 </body>
