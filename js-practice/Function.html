@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>学习js书中第十章函数</title>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
 </head>
 <body>
 <script>
@@ -39,6 +42,80 @@
     //apply() 方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。
     //拓展操作符
     console.log(getSum(...values));
+    //this 箭头函数中的this会保留定义该函数时的上下文
+    window.color = "red";
+    let o = {color : "blue"};
+    let sayColor = ()=>console.log(this.color);
+    sayColor();
+    o.sayColr = sayColor;
+    o.sayColr();
+    //
+    // function King (){
+    //     this.name = "herry";
+    //     setTimeout(()=>console.log(this.name),2000);
+    // }
+    // function Queen(){
+    //     this.name = "elsa";
+    //     setTimeout(()=>console.log(this.name),3000);
+    // }
+    // new King();
+    // new Queen();
+    console.log("-----")
+   // console.log(King.caller);//这里输出的就是null caller 是调用当前函数的函数 如果是全局作用域下就是null
+    function outer(){
+        inner();
+    }
+    function inner(){
+        console.log(inner.caller);
+    }
+    outer();//输出outer函数的源代码//caller 是调用当前函数的函数
+    //call 和apply 的强大之处在于控制函数调用上下文，即函数体内this值的能力
+    // sayColor();
+    // sayColor.call(this);
+    // sayColor.call(window);
+    // sayColor.call(o);
+    window.identify = 'the window';
+    let object = {
+        identify:'my object',
+        getIdentityFunc() {
+         //   let that = this;
+            return function (){
+               // return that.identify;
+                return this.identify;
+            };
+        }
+    };
+    console.log(object.getIdentityFunc()());
+    //实现点第几个div就显示相应的索引值
+    let divs = document.querySelectorAll('div');
+    // for(var i =0 ;i<divs.length;++i)
+    // {
+    //     divs[i].addEventListener('click',function (){
+    //         console.log(i);
+    //     });
+    // }//但是let就可以
+    //立即调用的函数表达式
+    for(var i =0 ;i<divs.length;++i)
+    {
+        divs[i].addEventListener('click',(function (frozenCounter){
+            // console.log(i);
+            return function (){
+                console.log(frozenCounter);
+                console.log(i);
+            };
+        })(i));
+    }
+    (function (){
+        let privateVariable = 10;
+        function privateFunction(){
+            return false;
+        }
+        MyObject = function (){};
+        MyObject.prototype.publicMethod = function (){
+            privateVariable ++;
+            return privateFunction();
+        };
+    })();
 </script>
 </body>
 </html>
