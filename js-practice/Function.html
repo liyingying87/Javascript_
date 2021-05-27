@@ -6,6 +6,7 @@
 </head>
 <body>
 <script>
+    //定义函数的几种方式
   function sum(a,b){
     return a+b;
   }
@@ -18,6 +19,26 @@
   };
   console.log(sum1(4,8));
   console.log(sum2(4,8));
+  //箭头函数
+    let ints = [2,3,4];
+    //Array.prototype.map() map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。
+    console.log(ints.map(function (i){return i+1;}));
+    console.log(ints.map((i)=>{return i+1;}));
+//Object.getOwnPropertyDescriptor()
+//     Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+
+    let values = [1,2,3,4];
+    function getSum(){
+        let sum =0;
+        for(let i=0;i<arguments.length;++i){
+            sum+=arguments[i];
+        }
+        return sum;
+    }
+    console.log(getSum.apply(null,values));
+    //apply() 方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。
+    //拓展操作符
+    console.log(getSum(...values));
 </script>
 </body>
 </html>
