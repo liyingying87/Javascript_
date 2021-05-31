@@ -125,6 +125,67 @@ target: 目标target属性用于指定链接如何呈现出来。例如，target
     <li></li>
 </ol>
 <!--重点强调-->
-
+<!--（emphasis）元素来标记强调这样的情况。-->
+<p>I am <em>glad</em> that.</p>
+<!--用<strong> (strong importance) 元素来标记器粗体风格-->
+<p>I am <strong>glad</strong> that.</p>
+<!--斜体字、粗体字、下划线...
+<i> 被用来传达传统上用斜体表达的意义：外国文字，分类名称，技术术语，一种思想……
+<b> 被用来传达传统上用粗体表达的意义：关键字，产品名称，引导句……
+<u> 被用来传达传统上用下划线表达的意义：专有名词，拼写错误……-->
+<p>
+    菜单上有好多舶来词汇，比如 <i lang="uk-latn">vatrushka</i>（东欧乳酪面包）,
+    <i lang="id">nasi goreng</i>（印尼炒饭）以及<i lang="fr">soupe à l'oignon</i>（法式洋葱汤）。
+</p>
+<ol>
+    <li>
+        <b>切</b>下两片面包，
+    </li>
+    <li>
+        在两片面包中间<b>夹入</b>一片西红柿和一片生菜叶。
+    </li>
+</ol>
+<!--超链接-->
+<p>创建一个超链接
+    <a href="https://www.mozilla.org/zh-CN/">Mozilla 主页</a>
+</p>
+<a href="https://www.mozilla.org/zh-CN/">
+    <img src="https://roy-tian.github.io/learning-area/extras/getting-started-web/beginner-html-site/images/firefox-icon.png" alt="链接至 Mozilla 主页的 Mozilla 标志">
+</a>
+<!--统一资源定位符(URL)与路径(path)快速入门-->
+<!--超链接除了可以链接到文档外，也可以链接到HTML文档的特定部分（被称为文档片段）。-->
+<h2 id ="Mailing_address">邮寄地址</h2>
+<p>要提供意见和建议，请将信件邮寄至 <a href="Learn.html#Mailing_address">我们的地址</a>。</p>
+<p>本页面底部可以找到 <a href="#Mailing_address">公司邮寄地址</a>。</p>
+<!--绝对URL和相对URL-->
+<!--尽可能使用相对链接-->
+<ul>
+    <li><a href="./test_url/index.html" target="_self">主页</a></li>
+    <li><a href="./test_url/picture.html">图片</a></li>
+    <li><a href="./test_url/projects.html">项目</a></li>
+    <li><a href="./test_url/social.html">社交</a></li>
+</ul>
+<!--电子邮件链接 其最基本和最常用的使用形式为一个mailto:link （链接），链接简单说明收件人的电子邮件地址-->
+<a href="mailto:nowhere@mozilla.org">向nowhere发邮件</a>
+<!--事实上，任何标准的邮件头字段可以被添加到你提供的邮件URL。 其中最常用的是主题(subject)、抄送(cc)和主体(body) (这不是一个真正的头字段，但允许您为新邮件指定一个短内容消息)。 每个字段及其值被指定为查询项。-->
+<a href="mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&bcc=name3@rapidtables.com&subject=The%20subject%20of%20the%20email&body=The%20body%20of%20the%20email">
+    Send mail with cc, bcc, subject and body
+</a>
+<!--高阶文字排版-->
+<!--描述列表 这种列表的目的是标记一组项目及其相关描述，例如术语和定义，或者是问题和答案等。
+描述列表使用与其他列表类型不同的闭合标签— <dl>; 此外，每一项都用 <dt> (description term) 元素闭合。每个描述都用 <dd> (description description) 元素闭合。-->
+<dl>
+    <dt>内心独白</dt>
+    <dd>戏剧中，某个角色对自己的内心活动或感受进行念白表演，这些台词只面向观众，而其他角色不会听到。</dd>
+    <dt>语言独白</dt>
+    <dd>戏剧中，某个角色把自己的想法直接进行念白表演，观众和其他角色都可以听到。</dd>
+    <dt>旁白</dt>
+    <dd>戏剧中，为渲染幽默或戏剧性效果而进行的场景之外的补充注释念白，只面向观众，内容一般都是角色的感受、想法、以及一些背景信息等。</dd>
+</dl>
+<dl>
+    <dt>培根</dt>
+    <dd>整个世界的粘合剂</dd>
+</dl>
+<!--引用-->
 </body>
 </html>
