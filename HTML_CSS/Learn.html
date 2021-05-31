@@ -186,6 +186,150 @@ target: 目标target属性用于指定链接如何呈现出来。例如，target
     <dt>培根</dt>
     <dd>整个世界的粘合剂</dd>
 </dl>
-<!--引用-->
+<!--块引用-->
+<!--如果一个块级内容从其他地方被引用，你应该把它用<blockquote>元素包裹起来，且在cite属性里面用url指向引用的资源-->
+<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+    <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
+        Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
+</blockquote>
+<!--行内引用-->
+<p>The quote element — <code>&lt;q&gt;</code> — is <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
+    for short quotations that don't require paragraph breaks.</q></p>
+<!--引文
+cite属性内容不会被浏览器显示、屏幕阅读器阅读，需使用 JavaScript 或 CSS，浏览器才会显示cite的内容。
+如果你想要确保引用的来源在页面上是可显示的，更好的方法是为<cite>元素附上链接：
+-->
+<cite>MDN blockquote page</cite>
+<p>According to the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+    <cite>MDN blockquote page</cite></a>:
+</p>
+
+<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+    <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
+        Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
+</blockquote>
+
+<p>The quote element — <code>&lt;q&gt;</code> — is <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
+    for short quotations that don't require paragraph breaks.</q> -- <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
+    <cite>MDN q page</cite></a>.</p>
+
+<p>你好！欢迎访问我的激励网页！<a href="http://www.brainyquote.com/quotes/authors/c/confucius.html">孔子</a>曰：</p>
+<blockquote cite="https://zh.wikipedia.org/zh-hans/孔子">
+    <p>譬如为山，未成一篑，止，吾止也。譬如平地，虽覆一篑，进，吾往也。</p>
+</blockquote>
+<p>要保持乐观，<q cite="http://www.affirmationsforpositivethinking.com/">不要说泄气的话</q>。（源自 <a href="http://www.affirmationsforpositivethinking.com/"><cite>Affirmations for Positive Thinking</cite></a>。）</p>
+<!--缩略词另一个你在web上看到的相当常见的元素是<abbr>——它常被用来包裹一个缩略语或缩写，并且提供缩写的解释（包含在title属性中）。-->
+<p>我们使用 <abbr title="超文本标记语言（Hyper text Markup Language）">HTML</abbr> 来组织网页文档</p>
+<p>第 33 届 <abbr title="夏季奥林匹克运动会">奥运会</abbr> 将于 2024 年 8 月在法国巴黎举行。</p>
+<!--标记联系方式 HTML有个用于标记联系方式的元素——<address>。它仅仅包含你的联系方式-->
+<address>
+    <p>Chris Mills, Manchester, The Grim North, UK</p>
+</address>
+<address>
+    <p>Page written by <a href="../authors/chris-mills/">Chris Mills</a>.</p>
+</address>
+<!--上下标 sub sup-->
+<p>咖啡因的化学方程式是 C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>。</p>
+<p>如果 x<sup>2</sup> 的值为 9，那么 x 的值必为 3 或 -3。</p>
+<!--展示计算机代码-->
+<!--有大量的HTML元素可以来标记计算机代码：
+<code>: 用于标记计算机通用代码。
+<pre>: 用于保留空白字符（通常用于代码块）——如果您在文本中使用缩进或多余的空白，浏览器将忽略它，您将不会在呈现的页面上看到它。但是，如果您将文本包含在<pre></pre>标签中，那么空白将会以与你在文本编辑器中看到的相同的方式渲染出来。
+<var>: 用于标记具体变量名。
+<kbd>: 用于标记输入电脑的键盘（或其他类型）输入。
+<samp>: 用于标记计算机程序的输出。-->
+<pre><code>const para = document.querySelector('p');
+
+para.onclick = function() {
+  alert('噢，噢，噢，别点我了。');
+}</code></pre>
+
+<p>请不要使用 <code>&lt;font&gt;</code> 、 <code>&lt;center&gt;</code> 等表象元素。</p>
+
+<p>在上述的 JavaScript 示例中，<var>para</var> 表示一个段落元素。</p>
+
+
+<p>按 <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>A</kbd> 选择全部内容。</p>
+
+<pre>$ <kbd>ping mozilla.org</kbd>
+<samp>PING mozilla.org (63.245.215.20): 56 data bytes
+64 bytes from 63.245.215.20: icmp_seq=0 ttl=40 time=158.233 ms</samp></pre>
+<!--标记时间和日期
+HTML 还支持将时间和日期标记为可供机器识别的格式的 <time> 元素。-->
+<!--datetime
+该属性表示此元素的时间和日期，并且属性值必须是一个有效的日期格式，并可包含时间。 如果此值不能被解析为日期，元素不会有一个关联的时间戳.-->
+<time datetime="2021-05-20">2020年5月20日</time>
+<!-- 标准简单日期 -->
+<time datetime="2016-01-20">20 January 2016</time>
+<!-- 只包含年份和月份-->
+<time datetime="2016-01">January 2016</time>
+<!-- 只包含月份和日期 -->
+<time datetime="01-20">20 January</time>
+<!-- 只包含时间，小时和分钟数 -->
+<time datetime="19:30">19:30</time>
+<!-- 还可包含秒和毫秒 -->
+<time datetime="19:30:01.856">19:30:01.856</time>
+<!-- 日期和时间 -->
+<time datetime="2016-01-20T19:30">7.30pm, 20 January 2016</time>
+<!-- 含有时区偏移值的日期时间 -->
+<time datetime="2016-01-20T19:30+01:00">7.30pm, 20 January 2016 is 8.30pm in France</time>
+<!-- 调用特定的周 -->
+<time datetime="2016-W04">The fourth week of 2016</time>
+<!--文档与网站架构-->
+<!--文档的基本组成部分  页眉、导航栏、主内容、侧边栏、页脚
+为了实现语义化标记，HTML 提供了明确这些区段的专用标签，例如：
+<header>：页眉。
+<nav>：导航栏。
+<main>：主内容。主内容中还可以有各种子内容区段，可用<article>、<section> 和 <div> 等元素表示。
+<aside>：侧边栏，经常嵌套在 <main> 中。
+<footer>：页脚。
+<main> 存放每个页面独有的内容。每个页面上只能用一次 <main>，且直接位于 <body> 中。最好不要把它嵌套进其它元素。
+<article> 包围的内容即一篇文章，与页面其它部分无关（比如一篇博文）。
+<section> 与 <article> 类似，但 <section> 更适用于组织页面使其按功能（比如迷你地图、一组文章标题和摘要）分块。一般的最佳用法是：以 标题 作为开头；也可以把一篇 <article> 分成若干部分并分别置于不同的 <section> 中，也可以把一个区段 <section> 分成若干部分并分别置于不同的 <article> 中，取决于上下文。
+<aside> 包含一些间接信息（术语条目、作者简介、相关链接，等等）。
+<header> 是简介形式的内容。如果它是 <body> 的子元素，那么就是网站的全局页眉。如果它是 <article> 或<section> 的子元素，那么它是这些部分特有的页眉（此 <header> 非彼 标题）。
+<nav> 包含页面主导航功能。其中不应包含二级链接等内容。
+<footer> 包含了页面的页脚部分。
+-->
+<!--无语义元素-->
+<!--<span> 与 div 元素很相似，但 div 是一个 块元素 而 <span> 则是 行内元素 .-->
+<p>国王喝得酩酊大醉，在凌晨 1 点时才回到自己的房间，踉跄地走过门口。<span class="editor-note">[编辑批注：此刻舞台灯光应变暗]</span>.</p>
+<div class="shopping-cart">
+    <h2>购物车</h2>
+    <ul>
+        <li>
+            <p><a href=""><strong>银耳环</strong></a>：$99.95.</p>
+            <img src="../products/3333-0985/" alt="Silver earrings">
+        </li>
+        <li>
+            ...
+        </li>
+    </ul>
+    <p>售价：$237.89</p>
+</div>
+<!--这里不应使用 <aside>，因为它和主内容并没有必要的联系（你想在任何地方都能看到它）。甚至不能用 <section> ，因为它也不是页面上主内容的一部分。所以在这种情况下就应使用 <div>，为满足无障碍使用特征，还应为购物车的标题设置一个可读标签。
+
+警告：<div> 非常便利但容易被滥用。由于它们没有语义值，会使 HTML 代码变得混乱。要小心使用，只有在没有更好的语义方案时才选择它，而且要尽可能少用， 否则文档的升级和维护工作会非常困难。-->
+<!--换行与水平分割线
+<br> 可在段落中进行换行；<br> 是唯一能够生成多个短行结构（例如邮寄地址或诗歌）的元素。
+<hr> 元素在文档中生成一条水平分割线，表示文本中主题的变化（例如话题或场景的改变）。一般就是一条水平的直线。
+-->
+<p>从前有个人叫小高<br>
+    他说写 HTML 感觉最好<br>
+    但他写的代码结构语义一团糟<br>
+    他写的标签谁也懂不了。</p>
+<p>原来这唐僧是个慈悯的圣僧。他见行者哀告，却也回心转意道：“既如此说，且饶你这一次。再休无礼。如若仍前作恶，这咒语颠倒就念二十遍！”行者道：“三十遍也由你，只是我不打人了。”却才伏侍唐僧上马，又将摘来桃子奉上。唐僧在马上也吃了几个，权且充饥。</p>
+<hr>
+<p>却说那妖精，脱命升空。原来行者那一棒不曾打杀妖精，妖精出神去了。他在那云端里，咬牙切齿，暗恨行者道：“几年只闻得讲他手段，今日果然话不虚传。那唐僧已此不认得我，将要吃饭。若低头闻一闻儿，我就一把捞住，却不是我的人了。不期被他走来，弄破我这勾当，又几乎被他打了一棒。若饶了这个和尚，诚然是劳而无功也。我还下去戏他一戏。”</p>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
