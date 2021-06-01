@@ -1,0 +1,5 @@
+p {
+    /*CSS 属性 background-image 和另其他 background-* 属性是用来放置背景图片的。
+    比如，为页面中的所有段落设置一个背景图片，*/
+    background-image: url("../img/img.png");
+}
