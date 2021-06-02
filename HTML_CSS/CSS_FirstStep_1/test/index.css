@@ -1,7 +1,21 @@
 p {
     color: red;
+    /* px 表示 “像素（pixels）”: 基础字号为 10 像素 */
+    /*font-size:0.9em;*/
+    font-size: 12px;
+
 }
-p {
-    color: blue;
+
+div {
+    width: 100px;
+    /*容器的宽度*/
+    background-color: gold;
+    /*背景颜色*/
+    font-size: 25px;
+    /*一个文字的字体大小*/
+    color: #C1437A;
+    /*字体的颜色*/
+    border: 4mm ridge rgba(170, 50, 220, .6);
+    /*该容器的边框*/
 }
 

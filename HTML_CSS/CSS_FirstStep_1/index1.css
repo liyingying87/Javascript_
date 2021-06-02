@@ -70,3 +70,64 @@ CSS语言有规则来控制在发生碰撞时哪条规则将获胜--这些规则
 2.平级里后面的赢
 */
 /*重要的是要记住，在css中，属性和值都是区分大小写的。*/
+
+
+/*函数*/
+/*一个例子是calc()函数。这个函数允许您在CSS中进行简单的计算*/
+.outer {
+    border: 5px solid black;
+}
+.box {
+    padding: 10px;
+    width: calc(90% - 30px);
+    /*一个函数由函数名和一些括号组成，其中放置了该函数的允许值。在上面的calc()示例中，我要求此框的宽度为包含块宽度的90%，减去30像素。*/
+    background-color: rebeccapurple;
+    color: white;
+}
+.box2{
+    color: cyan;
+    margin: 30px;
+    width: 100px;
+    height: 100px;
+    background-color: mediumpurple;
+    /*背景色*/
+    /*背景图*/
+    background-image:
+            /*渐变色*/
+            linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
+            url("dove.png");
+    /*另一个函数 rotate  transform属性允许你旋转，缩放，倾斜或平移给定元素*/
+    transform: rotate(0.8turn)
+    /*transform: matrix3d(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0);*/
+}
+/*@规则
+您将遇到的最常见的 @rules 之一是@media，它允许您使用 媒体查询 来应用CSS，仅当某些条件成立(例如，当屏幕分辨率高于某一数量，或屏幕宽度大于某一宽度时)。
+*/
+/*我们将给 <body> 元素一个粉红色的背景色。但是，我们随后使用@media创建样式表的一个部分，该部分仅适用于视口大于30em的浏览器。如果浏览器的宽度大于30em，则背景色将为蓝色。*/
+body {
+    background-color: blue;
+}
+
+@media (min-width: 30em) {
+    body {
+        background-color: pink;
+    }
+}
+/*速记属性
+一些属性，如 font, background, padding, border, and margin 等属性称为速记属性--这是因为它们允许您在一行中设置多个属性值，从而节省时间并使代码更整洁。*/
+/*padding CSS 简写属性控制元素所有四条边的内边距区域。*/
+/*padding: 10px 15px 15px 5px;*/
+/*上面和下面是等价的*/
+/*padding-top: 10px;*/
+/*padding-right: 15px;*/
+/*padding-bottom: 15px;*/
+/*padding-left: 5px;*/
+h4 {
+    background-color: cornflowerblue;
+    /*上下内边距是5像素,左右内边距是10像素*/
+    padding: 2px 3px;
+}
+h3 {
+    background-color: cyan;
+    padding: 110px 50px 50px 110px;
+}
