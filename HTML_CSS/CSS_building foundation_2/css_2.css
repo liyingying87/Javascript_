@@ -1,0 +1,63 @@
+.main {
+    color: rebeccapurple;
+    border: 2px solid #ccc;
+    padding: 1em;
+}
+
+.special {
+    color: black;
+    font-weight: bold;
+}
+/*理解继承*/
+/*控制继承
+CSS 为控制继承提供了四个特殊的通用属性值。每个css属性都接收这些值。
+inherit
+设置该属性会使子元素属性和父元素相同。实际上，就是 "开启继承".
+initial
+设置属性值和浏览器默认样式相同。如果浏览器默认样式中未设置且该属性是自然继承的，那么会设置为 inherit 。
+unset
+将属性重置为自然值，也就是如果属性是自然继承那么就是 inherit，否则和 initial一样
+还有一个新的属性, revert (en-US)， 只有很少的浏览器支持。
+*/
+body {
+    color: green;
+}
+
+.myclass-1 a {
+    /*设置该属性会使子元素属性和父元素相同。实际上，就是 "开启继承".*/
+    color: inherit;
+}
+
+.myclass-2 a {
+    /*设置属性值和浏览器默认样式相同。如果浏览器默认样式中未设置且该属性是自然继承的，那么会设置为 inherit 。*/
+    color: initial;
+}
+
+.myclass-3 a {
+    /*将属性重置为自然值，也就是如果属性是自然继承那么就是 inherit，否则和 initial一样*/
+    color: unset;
+}
+a{
+    color: #c13832;
+}
+blockquote{
+    background-color: #c13832;
+    border: 2px solid green;
+}
+.fix-this{
+    /*all 属性可以是继承值中的任意一个
+    这是一种撤销对样式所做更改的简便方法，以便回到之前已知的起点。*/
+    all: inherit;
+}
+/*一种常见的做法是给基本元素定义通用样式，然后给不同的元素创建对应的类。*/
+h2{
+    color: #DCC48E;
+    font-size: 2em;
+    font-family: Georgia, 'Times New Roman', Times, serifr;
+}
+.small{
+    font-size: 1em ;
+}
+.bright{
+    color: rebeccapurple;
+}

@@ -16,6 +16,49 @@ Stylesheets cascade（样式表层叠） — 简单的说，css规则的顺序�
 继承也需要在上下文中去理解 —— 一些设置在父元素上的css属性是可以被子元素继承的，有些则不能。
 举一个例子，如果你设置一个元素的 color 和 font-family ，每个在里面的元素也都会有相同的属性，除非你直接在元素上设置属性。
 -->
-</body>
+<ul class="main">
+    <li>Item One</li>
+    <li>Item Two
+        <ul>
+            <li>2.1</li>
+            <li>2.2</li>
+        </ul>
+    </li>
+    <li>Item Three
+        <ul class="special">
+            <li>3.1
+                <ul>
+                    <li>3.1.1</li>
+                    <li>3.1.2</li>
+                </ul>
+            </li>
+            <li>3.2</li>
+        </ul>
+    </li>
+</ul>
+<!--理解控制继承的四个属性-->
+<ul>
+    <li>Default  <a href="#">link</a> color</li>
+    <li class="myclass-1">Inherit the  <a href="#">link</a> color</li>
+    <li class="myclass-2">Reset the  <a href="#">link</a> color</li>
+    <li class="myclass-3">Unset the  <a href="#">link</a> color</li>
+</ul>
+<!--重设所有属性值-->
+<!--CSS 的 shorthand 属性 all 可以用于同时将这些继承值中的一个应用于（几乎）所有属性。
+它的值可以是其中任意一个(inherit, initial, unset, or revert)。
+这是一种撤销对样式所做更改的简便方法，以便回到之前已知的起点。-->
+<blockquote>
+    <p>This blockquote is styled</p>
+</blockquote>
+
+<blockquote class="fix-this">
+    <p>This blockquote is not styled</p>
+</blockquote>
+<h2>head with no class</h2>
+<h2 class="small">heading with class of small </h2>
+<h2 class="bright">heading with class of bright </h2>
+
+
+
 </body>
 </html>
