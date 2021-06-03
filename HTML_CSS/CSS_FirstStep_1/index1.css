@@ -123,22 +123,11 @@ body {
 /*padding-bottom: 15px;*/
 /*padding-left: 5px;*/
 h4 {
-    /*background-color: cornflowerblue;*/
-    /*内边距表示内容和边框有了距离 */
-    /*一个值 上下左右都有x边距*/
+    background-color: cornflowerblue;
     /*上下内边距是5像素,左右内边距是10像素*/
-    /*三个值 上边距 左右边距 下边距*/
-    padding: 5px 10px;
-    color: white;
-    background: red url(dove.png) 10px 10px repeat-x fixed;
-/*  background-color: red;
-background-image: url(bg-graphic.png);
-background-position: 10px 10px;
-background-repeat: repeat-x;
-background-attachment: fixed;  */
+    padding: 2px 3px;
 }
 h3 {
-
-    background-color: lightgray;
-    padding: 110px 10px 50px 110px;
+    background-color: cyan;
+    padding: 110px 50px 50px 110px;
 }
