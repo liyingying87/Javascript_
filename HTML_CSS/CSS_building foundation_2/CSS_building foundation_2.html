@@ -57,7 +57,15 @@ Stylesheets cascade（样式表层叠） — 简单的说，css规则的顺序�
 <h2>head with no class</h2>
 <h2 class="small">heading with class of small </h2>
 <h2 class="bright">heading with class of bright </h2>
-
+<!--优先级-->
+<div id="outer" class="container">
+    <div id="inner" class="container">
+        <ul>
+            <li class="nav"><a href="#">One</a></li>
+            <li class="nav"><a href="#">Two</a></li>
+        </ul>
+    </div>
+</div>
 
 
 </body>

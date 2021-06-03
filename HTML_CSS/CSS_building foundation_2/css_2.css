@@ -61,3 +61,27 @@ h2{
 .bright{
     color: rebeccapurple;
 }
+/*来看看浏览器如何计算优先级。我们已经知道一个元素选择器比类选择器的优先级更低会被其覆盖。本质上，不同类型的选择器有不同的分值
+把这些分数相加就得到特定选择器的权重，然后就可以进行匹配。
+一个选择器的优先级可以说是由四个部分相加（分量），可以认为是个十百千 四位数的四个位数：
+千位数：如果声明在style属性，内联样式应该得一分，这样的声明没有选择器，所以他的总分是1000
+百位数：选择器中包含id选择器得一分
+十位数:选择器中包含类选择器，属性选择器  li[class~="a"]会匹配一个a类，不过也可以匹配一列用空格分开、包含a类的值，它选中了第二和第三项。
+      或者伪类【现在还是不是很了解，等后面看吧】 伪类就是开头为冒号的关键字：:pseudo-class-name  则该位得一分。
+个位数：选择器中包含元素、伪元素选择器则该位得一分。
+*/
+#outer a{
+    background-color: lightcoral;
+}
+#outer #inner a {
+    background-color: blue;
+}
+#outer div ul li a {
+    color: yellow;
+}
+#outer div ul .nav a {
+    color: white;
+}
+div div li:nth-child(2) a:hover {
+    border: 10px solid black;
+}
