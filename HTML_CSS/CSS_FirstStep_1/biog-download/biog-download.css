@@ -1,0 +1,48 @@
+body {
+    background-color: #fff;
+    color: #333;
+    /* font-family
+CSS 属性 font-family 允许您通过给定一个有先后顺序的，由字体名或者字体族名组成的列表来为选定的元素设置字体。 */
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1em;
+    margin: 0;
+  }
+
+  h1 {
+      color: hotpink;
+    font-size: 2em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* border-bottom
+border-bottom 简写属性把下边框的所有属性：border-bottom-color，border-bottom-style 与 border-bottom-width 设置到了一个声明中。这些属性描述了元素的下边框样式。 */
+    border-bottom: 10px dotted purple;
+  }
+
+  h2 {
+      /* 字体设置成为斜体 */
+    font-style: italic;
+    font-size: 1.5em;
+  }
+
+  .job-title {
+    color: #999999;
+    /* font-weight
+ font-weight CSS 属性指定了字体的粗细程度。 一些字体只提供 normal 和 bold 两种值。 */
+    font-weight: bold;
+  }
+
+  a:link,
+  a:visited {
+    color: #fb6542;
+  }
+ul{
+    background-color: #eeeeee;
+    border-width: 5px;
+    border: solid purple;
+    padding: 20px;
+    
+}
+  a:hover {
+      /* 文本装饰 */
+    text-decoration: none;
+    color: green;
+  }
