@@ -114,10 +114,10 @@ li[class^="c" i] {
 /*    font-weight: bold;*/
 /*}*/
 /*进行改进*/
-article p:first-child{
-    font-size: 90%;
-    font-weight: bold;
-}
+/*article p:first-child{*/
+/*    font-size: 90%;*/
+/*    font-weight: bold;*/
+/*}*/
 /*这将一直选中文章中的第一个子元素*/
 /*用户行为伪类
 一些伪类只会在用户以某种方式和文档交互的时候应用。这些用户行为伪类，有时叫做动态伪类，表现得就像是一个类在用户和元素交互的时候加到了元素上一样。
@@ -136,8 +136,30 @@ a:hover{
 伪元素以类似方式表现，不过表现得是像你往标记文本中加入全新的HTML元素一样，而不是向现有的元素上应用类。伪元素开头为双冒号::。
 ::pseudo-element-name
 */
-article p::first-line {
+/*article p::first-line {*/
+/*    font-size: 120%;*/
+/*    font-weight: bold;*/
+/*}*/
+/*精准的定位到第一行上面*/
+/*把伪类和伪元素组合起来*/
+article p:first-child::first-line {
     font-size: 120%;
     font-weight: bold;
 }
-/*精准的定位到第一行上面*/
+/*只有第一段的第一行加粗*/
+.before::before{
+    content:"加在开始的位置上";
+}
+.before::after{
+    content:"加结尾的位置上 ➥";
+}
+.beforebox:before{
+    content: "";
+    /*::before和::after伪元素与content属性的共同使用，在CSS中被叫做“生成内容”，而且你会见到这种技术被用于完成各种任务*/
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: rebeccapurple;
+    border: 1px solid black;
+}
+
