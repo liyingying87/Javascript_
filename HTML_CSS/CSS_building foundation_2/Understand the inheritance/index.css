@@ -1,0 +1,13 @@
+#outer div ul .nav a {
+  background-color: blue;
+  padding: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+div div li a {
+  color: yellow;
+}               
+#outer #inner a {
+  background-color: initial;
+}

@@ -37,9 +37,7 @@ body {
     /*将属性重置为自然值，也就是如果属性是自然继承那么就是 inherit，否则和 initial一样*/
     color: unset;
 }
-a{
-    color: #c13832;
-}
+
 blockquote{
     background-color: #c13832;
     border: 2px solid green;
