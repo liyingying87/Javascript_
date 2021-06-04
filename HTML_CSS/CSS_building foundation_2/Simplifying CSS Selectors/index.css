@@ -2,12 +2,12 @@
 /* h1, .special {
     color: blue;
   }  */
-  /* 
+  /*
   空格可以在逗号前或后，你可能还会发现如果每个选择器都另起一行，会更好读些。
 h1,
 .special {
   color: blue;
-}  
+}
 选择器列表中如果任何一个选择器无效，整条规则都会被忽略。
 */
 /* 选择器的种类
@@ -26,12 +26,118 @@ h1,
 最后一组选择器可以将其他选择器组合起来，更复杂的选择元素。下面的示例用运算符（`>`）选择了`<article>`元素的初代子元素。
 article > p { }
 */
-/* 类型、类和ID选择器 
+/* 类型、类和ID选择器
 选择器正选中<article>元素的任何第一子元素：
 article *:first-child {
-} 
+}
 指向特定元素的类
 span.highlight {
     background-color: yellow;
+}*/
+/*多个类被应用的时候指向一个元素
+在下面的示例中，有一个包含了一条笔记的<div>。灰色的边框在盒子带有notebox类的时候应用。如果它还有一个warning或是danger类，我们改变border-color。
+为了告诉浏览器我们只想匹配带有所有这些类的元素，我们可以将这些类不加空格地连成一串。
+*/
+.notebox {
+    border: 4px solid #666;
+    padding: .5em;
+}
+
+.notebox.warning {
+    border-color: orange;
+    font-weight: bold;
+}
+
+.notebox.danger {
+    border-color: red;
+    font-weight: bold;
+}
+/*.user.login   匹配同时包含user和login的元素
+{
+    font-size: 35px;
+}*/
+/*注意区别*/
+/*.user .login{  匹配含user下的含login的元素
+    background-color:green;
 }
 */
+/*属性选择器
+存否和值选择器
+这些选择器允许基于一个元素自身是否存在（例如href）或者基于各式不同的按属性值的匹配，来选取元素。
+[attr]	a[title]	匹配带有一个名为attr的属性的元素——方括号里的值。
+*/
+/*使用li[class]，我们就能匹配任何有class属性的选择器。这匹配了除了第一项以外的所有项。*/
+li[class] {
+    font-size: 200%;
+}
+/*li[class="a"]匹配带有一个a类的选择器，不过不会选中一部分值为a而另一部分是另一个用空格隔开的值的类，它选中了第二项。*/
+li[class='a']{
+    background-color: yellow;
+}
+/*会匹配一个a类，不过也可以匹配一列用空格分开、包含a类的值，它选中了第二和第三项。*/
+li[class~="a"]{
+    color: #C1437A;
+}
+/*子字符串匹配选择器
+这些选择器让更高级的属性的值的子字符串的匹配变得可行。例如，如果你有box-warning和box-error类，想把开头为“box-”字符串的每个物件都匹配上的话，你可以用[class^="box-"]来把它们两个都选中。
+*/
+/*li[class^="a"]匹配了任何值开头为a的属性*/
+li[class^="box"]{
+    font-size: 50%;
+}
+/*li[class$="a"]匹配了任何值结尾为a的属性*/
+li[class$='b']{
+    background-color: cornflowerblue;
+}
+/*li[class*="a"]匹配了任何值的字符串中出现了a的属性*/
+li[class*="x"]{
+    font-family: "Agency FB";
+}
+/*大小写敏感
+如果你想在大小写不敏感的情况下，匹配属性值的话，你可以在闭合括号之前，使用i值。
+这个标记告诉浏览器，要以大小写不敏感的方式匹配ASCII字符。没有了这个标记的话，值会按照文档语言对大小写的处理方式，进行匹配——HTML中是大小写敏感的。*/
+li[class^="c"] {
+    background-color: yellow;
+}
+
+li[class^="c" i] {
+    color: red;
+}
+/*伪类和伪元素
+这一类选择器的数量众多，通常用于很明确的目的。*/
+/*伪类，用于选择处于特定状态的元素，比如当他们是这一类型的第一个元素时，或者是当鼠标悬浮在元素上的时候..他们表现得像是你向你的文档的某个部分应用了一个类一样，帮你在你的标记文本中减少多余的类，让你的代码更加的灵活，易于维护。
+伪类就是开头为冒号的关键字：
+:pseudo-class-name
+*/
+/*.first{*/
+/*    font-size: 120%;*/
+/*    font-weight: bold;*/
+/*}*/
+/*进行改进*/
+article p:first-child{
+    font-size: 90%;
+    font-weight: bold;
+}
+/*这将一直选中文章中的第一个子元素*/
+/*用户行为伪类
+一些伪类只会在用户以某种方式和文档交互的时候应用。这些用户行为伪类，有时叫做动态伪类，表现得就像是一个类在用户和元素交互的时候加到了元素上一样。
+:hover——上面提到过，只会在用户将指针挪到元素上的时候才会激活，一般就是链接元素。
+:focus——只会在用户使用键盘控制，选定元素的时候激活。
+*/
+a:link,a:visited{
+    color:rebeccapurple;
+    font-weight: bold;
+/*字体加粗*/
+}
+a:hover{
+    color: hotpink;
+}
+/*伪元素
+伪元素以类似方式表现，不过表现得是像你往标记文本中加入全新的HTML元素一样，而不是向现有的元素上应用类。伪元素开头为双冒号::。
+::pseudo-element-name
+*/
+article p::first-line {
+    font-size: 120%;
+    font-weight: bold;
+}
+/*精准的定位到第一行上面*/
