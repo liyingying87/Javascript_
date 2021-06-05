@@ -1,0 +1,65 @@
+.container1 h1{
+    color: blue;
+}
+.container1 h2{
+    background-color: blue;
+    color: white;
+}
+.container1 p > span{
+    font-size: 200%;
+}
+.container2 #special{
+    background-color: yellow;
+}
+.alert{
+    border: 1px solid lightgray;
+}
+.alert.stop{
+    background-color: #c13832;
+}
+.alert.go{
+    background-color: green;
+}
+.container3 a{
+    color: orange;
+}
+a:hover{
+    text-decoration: none;
+    color: green;
+}
+.container3 p:first-child{
+    font-size: 150%;
+}
+.container3 p:first-child::first-line{
+    color: red;
+}
+/*让表格中每隔一行条带化，分别给它们一个颜色为#333的背景和一个白色前景。*/
+/*tr:nth-child(2n)
+表示HTML表格中的偶数行。*/
+table tr:nth-child(2n){
+    color: white;
+    background: #333;
+}
+/*让任何直接跟随二级标题的段落颜色为红色*/
+.container4 h2+p{
+    color: red;
+}
+/*移除使用了list类的无效列表的儿子元素前面的圆点并给他们添加一个1px的灰色下边框。*/
+.list{
+   list-style-type: none;
+}
+.list>li{
+    border-bottom: 1px solid lightgrey;
+}
+.container5 a {
+    border: 5px solid grey;
+}
+.container5 a[title]{
+    border: 5px solid pink;
+}
+.container5 a[href*='contact']{
+    border: 5px solid orange;
+}
+.container5 a[href^="https"]{
+    border: 5px solid green;
+}
