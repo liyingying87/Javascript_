@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <!--<title> 元素是一项元数据，用于表示整个 HTML 文档的标题（而不是文档内容）-->
     <title>跟着文档学习HTML和CSS  多媒体与嵌入内容（二）</title>
-    <link rel="stylesheet" href="./CSS/M2.css">
-    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="CSS/M2.css">
+    <script src="js/script.js"></script>
 </head>
 <body>
 <!--HTML中的图片-->
@@ -97,7 +97,7 @@ preload
 -->
 <video controls width="400" height="400"
        loop muted
-       poster="./img/poster.png">
+       poster="img/poster.png">
     <source src="rabbit320.mp4" type="video/mp4">
     <source src="rabbit320.webm" type="video/webm">
     <p>你的浏览器不支持 HTML5 视频。可点击<a href="rabbit320.mp4">此链接</a>观看</p>
@@ -129,7 +129,7 @@ mediaElem.load();
     这些字符串会带有一些元数据，它们可以用来描述这个字符串将会在视频中显示的时间，
     甚至可以用来描述这些字符串的样式以及定位信息。
     这些字符串叫做 cues ，你可以根据不同的需求来显示不同的样式，-->
-    <track kind="subtitles" src="./subtitles_en.vtt" srclang="en">
+    <track kind="subtitles" src="subtitles_en.vtt" srclang="en">
     <!--让其与 HTML 媒体一起显示，你需要做如下工作：
     1.以 .vtt 后缀名保存文件。
     2.用 <track> 标签链接 .vtt 文件， <track> 标签需放在 <audio> 或 <video> 标签当中，
@@ -225,7 +225,7 @@ SVG可能比栅格图像更难创建，具体取决于您尝试创建哪种图�
     <img src="triangle.png" alt="Triangle with three unequal sides" />
 </iframe>
 <!--响应式图片  怎样创建自适应的图片?-->
-<img src="./img/img.png" alt="Elva dressed as a fairy">
+<img src="img/img.png" alt="Elva dressed as a fairy">
 <!--我们可以使用两个新的属性——srcset 和 sizes——来提供更多额外的资源图像和提示，帮助浏览器选择正确的一个资源。-->
 <img srcset="img/img.png 320w,
              img/poster.png 800w"
