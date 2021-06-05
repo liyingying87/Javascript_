@@ -17,6 +17,30 @@ padding 属性（简写属性）可以有一到四个值
 也就是说，如果盒子已经有了宽度和高度，此时再指定内边框，会撑大盒子。
 为了保证盒子和内容大小一致，就用width和height减去多出来的内边距大小。
 */
+/*外边距margin  设置外边距用于控制盒子和盒子之间的距离
+外边距可以使得盒子水平居中，但是要满足盒子必须是指定了宽度并且盒子的左右外边距都设置成了auto
+ margin-left: auto; margin-right: auto;
+ margin: auto;
+ margin: 0 auto;
+以上三种均可使得块级元素水平居中
+行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可。
+
+外边距合并
+相邻块元素垂直外边距的合并：
+    当上下相邻的两个块元素（兄弟关系）相遇时，如果上面的元素有下外边距 margin-bottom，下面的元素有
+    上外边距 margin-top ，则他们之间的垂直间距不是 margin-bottom 与 margin-top 之和。取两个值中的
+    较大者这种现象被称为相邻块元素垂直外边距的合并。
+嵌套块元素垂直外边距的塌陷：
+    对于两个嵌套关系（父子关系）的块元素，父元素有上外边距同时子元素也有上外边距，此时父元素会塌陷较大的外边距值。
+*/
+div{
+    width: 200px;
+    height: 200px;
+    background-color: #DCC48E;
+    padding: 20px;
+    border: 3px solid blue;
+    margin: 0 auto;
+}
 
 
 
