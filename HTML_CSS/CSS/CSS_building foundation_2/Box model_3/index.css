@@ -72,3 +72,17 @@ padding 属性（简写属性）可以有一到四个值
 .block{
     display: block;
 }
+.container2 p,.container2 ul{
+    border: 3px solid pink;
+}
+.container2 span,.container2 li{
+    border: 2px solid blue;
+}
+.container2 ul{
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+}
+.inline{
+    display: inline;
+}
