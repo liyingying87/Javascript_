@@ -33,7 +33,7 @@ padding 属性（简写属性）可以有一到四个值
 嵌套块元素垂直外边距的塌陷：
     对于两个嵌套关系（父子关系）的块元素，父元素有上外边距同时子元素也有上外边距，此时父元素会塌陷较大的外边距值。
 */
-div{
+.container{
     width: 200px;
     height: 200px;
     background-color: #DCC48E;
@@ -41,12 +41,34 @@ div{
     border: 3px solid blue;
     margin: 0 auto;
 }
-
-
-
 /*块级盒子（Block box） 和 内联盒子（Inline box）
 这两种盒子会在页面流和元素之间的关系方面表现出不同的行为
 区别如下：
-块级盒子：
-
+块级盒子：①盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间，在绝大多多数情况下意味着盒子会和父容器一样宽
+②每个盒子都会换行
+③width和height可以发挥作用
+④内边距（padding）, 外边距（margin） 和 边框（border） 会将其他元素从当前盒子周围“推开”
+除非特殊指定，诸如标题(<h1>等)和段落(<p>)默认情况下都是块级的盒子。
+内联盒子:
+①盒子不会产生换行。
+②width 和 height 属性将不起作用。
+③垂直方向的内边距、外边距以及边框会被应用但是  不会  把其他处于 inline 状态的盒子推开。
+④水平方向的内边距、外边距以及边框会被应用且  会  把其他处于 inline 状态的盒子推开。
+用做链接的 <a> 元素、 <span>、 <em> 以及 <strong> 都是默认处于 inline 状态的。
+我们通过对盒子display 属性的设置，比如 inline 或者 block ，来控制盒子的外部显示类型。
 */
+.container1 p,.container1 ul{
+    border: 2px solid rebeccapurple;
+    padding: 0.5em;
+}
+.block,.container1 li{
+    border: 2px solid blue;
+    padding: .5em;
+}
+.container1 ul{
+    list-style: none;
+    display: flex;
+}
+.block{
+    display: block;
+}
