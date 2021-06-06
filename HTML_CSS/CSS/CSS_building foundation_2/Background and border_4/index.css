@@ -1,0 +1,46 @@
+.a{
+    height: 94px;
+    width: 251px;
+    /*background-color:blueviolet;*//*    多个背景图像*/
+    background-image:  linear-gradient(rgba(0, 0, 255, 0.5),
+    rgba(255, 255, 0, 0.5)),
+    url("./imgs/img.png"),url("./imgs/img_1.png");
+/*    控制背景平铺
+background-repeat属性用于控制图像的平铺行为。可用的值是:
+no-repeat — 不重复。
+repeat-x —水平重复。
+repeat-y —垂直重复。
+repeat — 在两个方向重复。*/
+    background-repeat: no-repeat,no-repeat;
+    background-size: 30%;
+/*    调整背景图像的大小
+cover —浏览器将使图像足够大，使它完全覆盖了盒子区，同时仍然保持其高宽比。在这种情况下，有些图像可能会跳出盒子外
+contain — 浏览器将使图像的大小适合盒子内。在这种情况下，如果图像的长宽比与盒子的长宽比不同，则可能在图像的任何一边或顶部和底部出现间隙。*/
+background-position: top center,top right;
+    /*背景图像定位
+    最常见的背景位置值有两个单独的值——一个水平值后面跟着一个垂直值。
+    */
+/*    渐变背景
+  background-image:  linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),url("./imgs/img.png");
+*/
+/*    背景附加
+另一个可供选择的背景是指定他们如何滚动时，内容滚动。这是由background-attachment属性控制的，它可以接受以下值:
+scroll: 使元素的背景在页面滚动时滚动。如果滚动了元素内容，则背景不会移动。实际上，背景被固定在页面的相同位置，所以它会随着页面的滚动而滚动。
+fixed: 使元素的背景固定在视图端口上，这样当页面或元素内容滚动时，它就不会滚动。它将始终保持在屏幕上相同的位置。
+local: 这个值是后来添加的(它只在Internet Explorer 9+中受支持，而其他的在IE4+中受支持)，因为滚动值相当混乱，在很多情况下并不能真正实现您想要的功能。局部值将背景固定在设置的元素上，因此当您滚动元素时，背景也随之滚动。
+只有在有内容要滚动时才会有效果，
+*/
+/*background-attachment: scroll;*/
+/*使用background 的简写
+如果使用多个背景，则需要为第一个背景指定所有普通属性，然后在逗号后面添加下一个背景。
+background-color 只能在逗号之后指定。
+background-size 值只能包含在背景位置之后，用'/'字符分隔，例如：center/80%。
+*/
+/*    .box {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.2) 39%, rgba(51,56,57,1) 96%) center center /490px 100px no-repeat,
+url(big-star.png) center no-repeat,
+    rebeccapurple;
+} 三个背景
+  */
+}
