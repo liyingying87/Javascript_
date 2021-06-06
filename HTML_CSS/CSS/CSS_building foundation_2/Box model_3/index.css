@@ -150,3 +150,26 @@ html {
     height: 300px;
     border: 3px solid rebeccapurple;
 }
+/*外边距折叠
+什么时候会发生？父子和兄弟外边距折叠
+     1.两个相同大小的正数：取某个外边距的值。即30px与30px发生折叠，折叠后的值为30px。
+     2.两个不同大小的正数：取较大的外边距的值。即30px与20px发生折叠，折叠后的值为30px。
+     3.一正一负：取正数与负数的和。即30px与-20px发生折叠，折叠后的值为10px。
+     4.相同大小的负数：同相同大小的数。-30px与-30px折叠，折叠后为-30px。
+     5.不同大小负数： 取绝对值较大的负数。-30px与-20px折叠，折叠后为-30px。
+*/
+
+.one {
+    border: 3px solid rebeccapurple;
+    margin-bottom: -20px;
+}
+.margin2{
+    border: 3px solid blue;
+}
+.two {
+    border: 3px solid rebeccapurple;
+    margin-top: -20px;
+}
+/*内边距
+
+*/
