@@ -1,0 +1,19 @@
+input[type="submit"]:hover{
+    background-color: #666666;
+}
+input[type="text"],input[type="email"]{
+    border: 2px solid #2a2a2a;
+    padding: 10px;
+    margin: 0 0 1em 0;
+}
+label{
+    font-size: 18px;
+/*    浏览器默认的字体大小是16px*/
+}
+input[type="submit"]{
+    border: 2px solid #2a2a2a;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    padding: 8px 2em;
+    font-weight: bold;
+}
