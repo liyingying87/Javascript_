@@ -1,0 +1,39 @@
+table {
+    font-size: 100%;
+    border-top: 1px solid darkgrey;
+    border-bottom: 1px solid grey;
+    border-collapse: collapse;
+}
+/*tr:nth-child(2),*/
+/*tr:nth-child(3){*/
+/*    text-align: right;*/
+/*}*/
+/*第二第三个tr*/
+tr :nth-child(2),
+tr :nth-child(3){
+    text-align: right;
+}
+/*tr中的第二和第三个孩子*/
+/*上面两种方式是有区别的，第一个是第二第三行右对齐，但是第二个是第二和第三列进行右对齐*/
+tr :first-child,
+tr :last-child {
+    text-align: left;
+}
+/*第一列左对齐*/
+/*tr:first-child,*/
+/*tr:last-child {*/
+/*    text-align: left;*/
+/*}*/
+/*第一行和最后一行左对齐*/
+tfoot th[colspan="2"]{
+    text-align: right;
+}
+tfoot td[colspan="2"]{
+    text-align: left;
+}
+tfoot{
+    border-top:2px solid #666666;
+}
+tbody tr:nth-child(odd){
+    background-color: lightgrey;
+}
