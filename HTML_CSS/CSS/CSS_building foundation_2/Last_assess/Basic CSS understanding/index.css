@@ -1,0 +1,71 @@
+/* General styles - put these straight into your stylesheet */
+
+body {
+    margin: 0;
+}
+/*这是整体页面的一般样式*/
+html {
+    font-family: 'Helvetica neue', Arial, 'sans serif';
+    font-size: 10px;
+    /*1em 就是10px*/
+    background-color: #ccc;
+}
+.card
+{
+    width: 35em;
+    height: 22em;
+    margin: 5em auto;
+    background-color: red;
+    border: 0.2em solid black;
+    border-radius: 1.5em;
+}
+.card header
+{
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0.1), rgba(0,0,0,0));
+    border-radius: 1.54em 1.5em 0 0;
+}
+/*编写一个同时面向 card head 和 card footer 的规则集,使它们计算的总高度为 50px（包括 30px 的内容高度和 10px 的 padding ）但用 em 来表示。*/
+.card header,.card footer{
+    height: 3em;
+    padding: 1em;
+}
+/*浏览器会为<h2> 和 <p>元素应用默认的 margin，这会影响我们的设计，所以编写一个规则集： margin 设置为 0。回想起来，内容框高度应该是 30px，你所有需要的数字都已经给你了，所以可以计算出行高。*/
+.card h2,.card p{
+    margin: 0;
+
+}
+/*编写一个规则集，使 <h2> 有效的字体大小为 20px (使用 em表达) 以及一个适当的行高将其放置在标题的内容框的中央。*/
+.card h2{
+    font-size: 2em;
+    line-height: 1.5;
+    /*用1.5乘以20px字体的大小，就可以得到行高就是内容高度30px*/
+}
+
+/*为页脚中的 <p> 编写一个规则集，使它的有效字体大小为 15px (使用 em表达) 以及一个适当的行高将其放置在页面的内容框的中央。回想起来，内容框高度应该是30px，你所有需要的数字都已经给你了，所以可以计算出行高。*/
+.card footer p{
+font-size: 1.5em;
+    line-height: 2;
+    /*用2乘以15px字体的大小，就可以得到行高就是内容高度30px*/
+}
+/*最为最后一步, 为 <article> 中的段落设置一个合适的 padding 值，让它和 <h2> 以及页脚的段落左边缘对齐，并将其颜色设置得便于阅读。*/
+.card article p{
+    padding: 1em;
+/*因为header 和footer 的padding 是1em*/
+    color: white;
+}
+.card footer
+{
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0), rgba(0,0,0,0.1));
+    border-radius: 0 0 1.5em 1.5em;
+}
+.card article img
+{
+    max-height: 100%;
+    float: right;
+}
+/*为了阻止图像溢出名片的主要内容 ( <article> 元素)，我们需要给它设置一个明确的高度。设置 <article>的高度为 120px，但是使用 em来表示。*/
+.card article {
+    height: 12em;
+    background-color: rgba(0,0,0,0.25);
+/*函数的第四个值表示透明度*/
+}
