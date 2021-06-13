@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+/*    CSS 中的 box-sizing 属性定义了 user agent 应该如何计算一个元素的总宽度和总高度。*/
+/*    border-box 告诉浏览器：你想要设置的边框和内边距的值是包含在width内的。也就是说，如果你将一个元素的width设为100px，那么这100px会包含它的border和padding，内容区的实际宽度是width减去(border + padding)的值。大多数情况下，这使得我们更容易地设定一个元素的宽高。*/
 }
 
 html {
@@ -36,6 +38,19 @@ h1 {
     padding: 44px 0;
     color: white;
     text-shadow: 1px 1px 1px black;
+    background-image: url("img_2.png");
+}
+body {
+    background: #fff;
+    background-image: url(img.png);
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,rgba(0,0,0,0.35)), url(img.png), url(img_1.png);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: top, top, bottom;
+    border-top: 1mm solid red;
+    border-bottom: 1mm solid red;
 }
 
-/* Your CSS below here */
+h1 {
+    /* box-shadow: 5px 5px 5px black; */
+    filter: drop-shadow(5px 5px 3px black);
+}
