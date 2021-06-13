@@ -17,3 +17,37 @@
 - 交叉轴（cross axis）是垂直于 flex 元素放置方向的轴。该轴的开始和结束被称为 cross start 和 cross end。  
 - 设置了 display: flex 的父元素（在本例中是 <section>）被称之为 flex 容器（flex container）。  
 - 在 flex 容器中表现为柔性的盒子的元素被称之为 flex 项（flex item）（本例中是 <article> 元素。
+## 列还是行?
+弹性盒子提供了 flex-direction 这样一个属性，它可以指定主轴的方向（弹性盒子子类放置的地方）— 它默认值是 row，这使得它们在按你浏览器的默认语言方向排成一排（在英语/中文浏览器中是从左到右）。看index0.html  
+## 换行  
+看index1.html  
+CSS flex-wrap 指定 flex 元素单行显示还是多行显示 。如果允许换行，这个属性允许你控制行的堆叠方向。  
+article 元素上设置的 flex: 200px 规则，意味着每个元素的宽度至少是200px；
+## flex-flow 缩写
+到这里，应当注意到存在着 flex-direction 和 flex-wrap — 的缩写 flex-flow。比如，你可以将
+```css
+flex-direction: row;
+flex-wrap: wrap;
+```
+替换为
+```css
+flex-flow: row wrap;
+```
+## flex: 缩写与全写  
+flex 是一个可以指定最多三个不同值的缩写属性：  
+- 第一个就是上面所讨论过的无单位比例。可以单独指定全写 flex-grow 属性的值。  
+- 第二个无单位比例 — flex-shrink — 一般用于溢出容器的 flex 项。这指定了从每个 flex 项中取出多少溢出量，以阻止它们溢出它们的容器。 这是一个相当高级的弹性盒子功能，我们不会在本文中进一步说明。
+- 第三个是上面讨论的最小值。可以单独指定全写 flex-basis 属性的值。  
+## 水平和垂直对齐  
+align-items 控制 flex 项在交叉轴上的位置。   
+- 默认的值是 stretch，其会使所有 flex 项沿着交叉轴的方向拉伸以填充父容器。如果父容器在交叉轴方向上没有固定宽度（即高度），则所有 flex 项将变得与最长的 flex 项一样长（即高度保持一致）。我们的第一个例子在默认情况下得到相等的高度的列的原因。
+- 在上面规则中我们使用的 center 值会使这些项保持其原有的高度，但是会在交叉轴居中。这就是那些按钮垂直居中的原因。
+- 你也可以设置诸如 flex-start 或 flex-end 这样使 flex 项在交叉轴的开始或结束处对齐所有的值。查看 align-items 了解更多.
+  
+justify-content 控制 flex 项在主轴上的位置。 
+- 默认值是 flex-start，这会使所有 flex 项都位于主轴的开始处。
+- 你也可以用 flex-end 来让 flex 项到结尾处。
+- center 在 justify-content 里也是可用的，可以让 flex 项在主轴居中。
+- 而我们上面用到的值 space-around 是很有用的——它会使所有 flex 项沿着主轴均匀地分布，在任意一端都会留有一点空间。
+- 还有一个值是 space-between，它和 space-around 非常相似，只是它不会在两端留下任何空间。
+
