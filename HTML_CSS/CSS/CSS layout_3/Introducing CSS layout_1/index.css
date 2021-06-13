@@ -1,0 +1,24 @@
+body {
+    width: 500px;
+    margin: 0 auto;
+}
+
+p {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.positioned {
+    /*position: relative;*/
+    /*相对定位,这里我们给中间段落的position 一个 relative值——这属性本身不做任何事情,所以我们还添加了top和left属性。这些可以将受影响的元素向下向右移——这可能看起来和你所期待的相反，但你需要把它看成是左边和顶部的元素被“推开”一定距离，这就导致了它的向下向右移动。*/
+ /*position: absolute;*/
+    /*绝对定位用于将元素移出正常布局流(normal flow)，以坐标的形式相对于它的容器定位到web页面的任何位置，以创建复杂的布局。有趣的是，它经常被用于与相对定位和浮动的协同工作。*/
+    position: fixed;
+    /*固定定位(fixed positioning)同绝对定位(absolute positioning)一样，将元素从文档流(document flow)当中移出了。但是，定位的坐标不会应用于"容器"边框来计算元素的位置，而是会应用于视口(viewport)边框。利用这一特性，我们可以轻松搞出一个固定位置的菜单，而不受底下的页面滚动的影响。*/
+    position: sticky;
+    /*粘性定位是最后一种我们能够使用的定位方式。它将默认的静态定位(static positioning)和固定定位(fixed positioning)相混合。当一个元素被指定了position: sticky时，它会在正常布局流中滚动，直到它出现在了我们给它设定的相对于容器的位置，这时候它就会停止随滚动移动，就像它被应用了position: fixed一样。*/
+    top: 30px;
+    left: 30px;
+}
