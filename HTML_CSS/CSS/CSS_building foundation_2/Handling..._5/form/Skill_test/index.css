@@ -14,6 +14,11 @@ input[type="submit"]{
     border-radius: 5px;
     border-style: none;
 }
+input[type="search"], input[type="submit"]
+{
+    font-size:inherit;
+    padding: 10px;
+}
 .myform{
     border: 2px black solid;
     padding: 5px;
