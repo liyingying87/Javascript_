@@ -18,4 +18,8 @@ grid-template-columns: repeat(3,1fr);
 ## 方便的minmax() 函数  
 minmax 函数为一个行/列的尺寸设置了取值范围。比如设定为 minmax(100px, auto)，那么尺寸就至少为100像素，并且如果内容尺寸大于100像素则会根据内容自动调整。在这里试一下把 grid-auto-rows 属性设置为minmax函数。
 ## 自动使用多列填充
-## 基于线的元素放置
+## 基于线的元素放置  
+英文中，网格的最左边——第一条列分隔线；网格的最上面——第一条行分割线。
+- grid-column-end 属性项目将横跨多少列，或者项目会在哪条列线（column-line）上结束。
+- grid-column-start 属性定义项目将在哪条列线上开始。
+- grid-column是上面两者的缩写。
