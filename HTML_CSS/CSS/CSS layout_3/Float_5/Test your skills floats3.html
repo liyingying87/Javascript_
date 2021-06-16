@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Float: Task 3</title>
+  <link rel="stylesheet" href="../styles.css"/>
+  <style>
+    body {
+      background-color: #fff;
+      color: #333;
+      font: 1.2em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
+      padding: 1em;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .box {
+      width: 500px;
+      padding: 0.5em;
+    }
+    .float {
+      margin: 15px;
+      width: 150px;
+      height: 150px;
+      border-radius: 5px;
+      background-color: rgb(207,232,220);
+      padding: 1em;
+      float: right;
+    }
+
+    .box {
+      background-color: rgb(79,185,227);
+      padding: 10px;
+      color: #fff;
+      /*使用display: flow-root
+一个新的 display 属性的值，它可以创建无副作用的 BFC。在父级块中使用 display: flow-root 可以创建新的 BFC。
+
+给 <div> display: flow-root 属性后，<div> 中的所有内容都会参与 BFC，浮动的内容不会从底部溢出。*/
+      display: flow-root;
+    /*  块格式化上下文
+    块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。*/
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="box">
+  <div class="float">Float</div>
+  <p>This sentence appears next to the float.</p>
+</div>
+
+</body>
+
+</html>
