@@ -50,4 +50,16 @@ justify-content 控制 flex 项在主轴上的位置。
 - center 在 justify-content 里也是可用的，可以让 flex 项在主轴居中。
 - 而我们上面用到的值 space-around 是很有用的——它会使所有 flex 项沿着主轴均匀地分布，在任意一端都会留有一点空间。
 - 还有一个值是 space-between，它和 space-around 非常相似，只是它不会在两端留下任何空间。
+## flex 项排序
+```css
+button:first-child {
+  order: 1;
+}
+```
+- 所有 flex 项默认的 order 值是 0。
+- order 值大的 flex 项比 order 值小的在显示顺序中更靠后。
+- 相同 order 值的 flex 项按源顺序显示。所以假如你有四个元素，其 order 值分别是2，1，1和0，那么它们的显示顺序就分别是第四，第二，第三，和第一。
+- 第三个元素显示在第二个后面是因为它们的 order 值一样，且第三个元素在源顺序中排在第二个后面。
+## flex 嵌套
+
 
