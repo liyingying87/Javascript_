@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 2em auto;
+            font: .9em/1.2 Arial, Helvetica, sans-serif;
+        }
+        /*将父容器改为网格布局后，他的直接子项会变为网格项。
+        与弹性盒子不同的是，在定义网格后，网页并不会马上发生变化。因为display: grid的声明只创建了一个只有一列的网格，所以你的子项还是会像正常布局流那样从上而下一个接一个的排布。*/
+        .container{
+          display: grid;
+          /*grid-template-columns: 200px 200px 200px;*/
+        /*为了让我们的容器看起来更像一个网格，我们要给网格增加一些列*/
+        /*  grid-template-columns: 2fr 1fr 1fr;*/
+        /*  这个定义里，第一列被分配了2fr可用空间，余下的两列各被分配了1fr的可用空间，这会使得第一列的宽度是第二第三列的两倍。*/
+        /* 使用fr作为单位*/
+        /*  grid-template-columns: 300px 1fr 2fr;*/
+        /*那么第一列宽度是300px，剩下的两列会根据除去300px后的可用空间按比例分配。*/
+            grid-gap: 20px;
+        /* 定义间隙*/
+        /*你可以使用repeat来重复构建具有某些宽度配置的某些列。举个例子，如果要创建多个等宽轨道，可以用下面的方法。*/
+        /*    grid-template-columns: repeat(3,1fr);*/
+            grid-template-columns: repeat(2, 2fr 1fr);
+
+        /* 和之前一样，你仍然得到了3个1fr的列。第一个传入repeat函数的值（3）表明了后续列宽的配置要重复多少次，而第二个值（1fr）表示需要重复的构建配置，这个配置可以具有多个长度设定。例如repeat(2, 2fr 1fr)，如果你仍然不明白，可以实际测试一下效果，这相当于填入了2fr 1fr 2fr 1fr。*/
+            grid-auto-rows: minmax(100px, auto);
+        }
+        .container > div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgb(207, 232, 220);
+            border: 2px solid rgb(79, 185, 227);
+        }
+    </style>
+</head>
+<body>
+<h1>Simple grid example</h1>
+<div class="container">
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <div>four</div>
+    <div>five</div>
+    <div>six</div>
+    <div>seven</div>
+</div>
+</body>
+</html>
