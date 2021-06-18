@@ -1,0 +1,76 @@
+body {
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.logo {
+    font-size: 200%;
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 980px;
+}
+
+.grid {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 980px;
+/*双列布局
+<article> 与 <aside> 元素应该为双列布局。它们的列尺寸应该是弹性的，以便在浏览器窗口收缩得更小的时候能够变窄。*/
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 20px;
+}
+
+nav {
+
+    background-color: #000;
+    padding: .5em;
+    /*导航条应随着内容一起滚动并且在触碰到视口顶部之后于顶部固定。*/
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /*在一行中显示导航选项，并且选项之间拥有相同的空间。*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*在一行中显示导航选项，并且选项之间拥有相同的空间。*/
+nav ul li{
+    text-align: center;
+    flex: 1;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: .5em 1em;
+}
+
+.photos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+/*照片应该以有 1px 间隔的两列网格显示出来。*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1px;
+}
+
+
+.feature {
+    width: 200px;
+    /*文章内的图片应该被文本包围。*/
+    float: left;
+    margin: 0 20px 20px 0 ;
+}

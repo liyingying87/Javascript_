@@ -21,7 +21,7 @@ background-position: top center,top right;
     最常见的背景位置值有两个单独的值——一个水平值后面跟着一个垂直值。
     */
 /*    渐变背景
-  background-image:  linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),url("./imgs/balloons1.jpg");
+  background-image:  linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),url("./images/balloons1.jpg");
 */
 /*    背景附加
 另一个可供选择的背景是指定他们如何滚动时，内容滚动。这是由background-attachment属性控制的，它可以接受以下值:
