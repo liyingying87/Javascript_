@@ -76,3 +76,16 @@ h1 {
   font-size: 6vw;
 }
 ```
+## 视口元标签
+```css
+<meta name="viewport" content="width=device-width,initial-scale=1">
+```
+这个元标签告诉移动端浏览器，它们应该将视口宽度设定为设备的宽度，将文档放大到其预期大小的100%，在移动端以你所希望的为移动优化的大小展示文档。  
+和视口元标签一起，你可以使用另外几个设定，但大体说来，上面那行就是你想要使用的。
+- initial-scale：设定了页面的初始缩放，我们设定为1。
+- height：特别为视口设定一个高度。
+- minimum-scale：设定最小缩放级别。
+- maximum-scale：设定最大缩放级别。
+- user-scalable：如果设为no的话阻止缩放。
+  
+你应该避免使用minimum-scale、maximum-scale，尤其是将user-scalable设为no。用户应该有权力尽可能大或小地进行缩放，阻止这种做法会引起访问性问题。
