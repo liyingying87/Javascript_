@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>默认样式信息窗体</title>
+    <style>
+        html, body, #container {
+            height: 100%;
+            width: 100%;
+        }
+        html {
+            font-size: 12px;
+        }
+        /*body {*/
+        /*    margin: 0;*/
+        /*    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
+        /*    line-height: 1.5;*/
+        /*    font-weight: 300;*/
+        /*    color: #111213;*/
+        /*}*/
+
+        /*hr {*/
+        /*    margin: 0.5rem 0;*/
+        /*    box-sizing: content-box;*/
+        /*    height: 0;*/
+        /*    overflow: visible;*/
+        /*    border: 0;*/
+        /*    border-top: 1px solid rgba(0, 0, 0, .1)*/
+        /*}*/
+
+        /*p {*/
+        /*    margin-top: 0;*/
+        /*    margin-bottom: 0;*/
+        /*}*/
+
+        /*label {*/
+        /*    display: inline-block;*/
+        /*    margin-bottom: 0.4rem;*/
+        /*}*/
+
+        /*label, .btn {*/
+        /*    margin-left: 0;*/
+        /*    font-size: 1rem;*/
+        /*}*/
+
+        /*button, input, select {*/
+        /*    margin: 0;*/
+        /*    font-family: inherit;*/
+        /*    font-size: inherit;*/
+        /*    line-height: inherit;*/
+        /*    overflow: visible;*/
+        /*    text-transform: none*/
+        /*}*/
+
+        /*[type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {*/
+        /*    padding: 0;*/
+        /*    border-style: none;*/
+        /*}*/
+
+        /*input[type=checkbox], input[type=radio] {*/
+        /*    box-sizing: border-box;*/
+        /*    padding: 0;*/
+        /*    -webkit-box-sizing: border-box;*/
+        /*    box-sizing: border-box;*/
+        /*    padding: 0;*/
+        /*    margin: 0 0.5rem 0 0;*/
+        /*}*/
+
+        /*h4 {*/
+        /*    font-family: inherit;*/
+        /*    line-height: 1.8;*/
+        /*    font-weight: 300;*/
+        /*    color: inherit;*/
+        /*    font-size: 1.1rem;*/
+        /*    margin-top: 0;*/
+        /*    margin-bottom: .5rem*/
+        /*}*/
+
+
+        /*.input-item>select, .input-item>input[type=text], .input-item>input[type=date] {*/
+        /*    position: relative;*/
+        /*    -ms-flex: 1 1 auto;*/
+        /*    flex: 1 1 auto;*/
+        /*    width: 1%;*/
+        /*    margin-bottom: 0;*/
+        /*}*/
+
+        /*.input-item>select:not(:last-child), .input-item>input[type=text]:not(:last-child), .input-item>input[type=date]:not(:last-child) {*/
+        /*    border-top-right-radius: 0;*/
+        /*    border-bottom-right-radius: 0*/
+        /*}*/
+
+        /*.input-item>select:not(:first-child), .input-item>input[type=text]:not(:first-child), .input-item>input[type=date]:not(:first-child) {*/
+        /*    border-top-left-radius: 0;*/
+        /*    border-bottom-left-radius: 0*/
+        /*}*/
+
+
+        /*.input-item-text input[type=checkbox], .input-item-text input[type=radio] {*/
+        /*    margin-top: 0*/
+        /*}*/
+        /*.info hr {*/
+        /*    margin-right: 0;*/
+        /*    margin-left: 0;*/
+        /*    border-top-color: grey;*/
+        /*}*/
+
+        .info {
+            padding: .75rem 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: .25rem;
+            position: fixed;
+            top: 1rem;
+            background-color: white;
+            width: auto;
+            min-width: 22rem;
+            border-width: 0;
+            right: 1rem;
+            box-shadow: 0 2px 6px 0 rgba(114, 124, 245, .5);
+        }
+        /*.code .btn {*/
+        /*    top: 1rem;*/
+        /*    position: absolute;*/
+        /*    right: 1rem;*/
+        /*}*/
+
+        /*.code .result {*/
+        /*    border: 1px solid rgba(0, 0, 0, 0.1);*/
+        /*    border-radius: 0.5rem;*/
+        /*    padding: 1rem;*/
+        /*    bottom: 1rem;*/
+        /*    position: absolute;*/
+        /*    top: 5.5rem;*/
+        /*    right: 1rem;*/
+        /*    left: 1rem;*/
+        /*    overflow: auto;*/
+        /*}*/
+
+        /*.code .status {*/
+        /*    color: #80adff;*/
+        /*    display: inline-block;*/
+        /*    font-size: 14px;*/
+        /*}*/
+
+        /*.code h4 {*/
+        /*    display: inline-block;*/
+        /*    max-width: 20rem;*/
+        /*    margin-right: 1rem;*/
+        /*    margin-bottom: 1rem;*/
+        /*}*/
+
+        /*select, input[type=text], input[type=date] {*/
+        /*    display: inline-block;*/
+        /*    width: 100%;*/
+        /*    padding: .375rem 1.75rem .375rem .75rem;*/
+        /*    line-height: 1.5;*/
+        /*    color: #495057;*/
+        /*    vertical-align: middle;*/
+        /*    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;*/
+        /*    background-size: 8px 10px;*/
+        /*    border: 1px solid #ced4da;*/
+        /*    border-radius: .25rem;*/
+        /*    -webkit-appearance: none;*/
+        /*    -moz-appearance: none;*/
+        /*    appearance: none*/
+        /*}*/
+
+        /*input[type=text],input[type=date] {*/
+        /*    background: #fff;*/
+        /*    padding: .375rem .75rem;*/
+        /*}*/
+
+        /*select:focus, input[type=text]:focus, input[type=date]:focus {*/
+        /*    border-color: #80bdff;*/
+        /*    outline: 0;*/
+        /*    box-shadow: 0 0 0 .1rem rgba(128, 189, 255, .1)*/
+        /*}*/
+
+        /*select:focus::-ms-value, input[type=text]:focus::-ms-value,input[type=date]:focus::-ms-value {*/
+        /*    color: #495057;*/
+        /*    background-color: #fff*/
+        /*}*/
+
+        /*@media screen and (min-width: 40rem) {*/
+        /*    .native-toast:not(.native-toast-edge) {*/
+        /*        max-width: 18rem;*/
+        /*    }*/
+        /*}*/
+        /*[class^="native-toast-icon-"] {*/
+        /*    vertical-align: middle;*/
+        /*    margin-right: 8px*/
+        /*}*/
+
+        /*[class^="native-toast-icon-"] svg {*/
+        /*    width: 16px;*/
+        /*    height: 16px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div class="info">
+    点击地图上的点标记，打开所添加的自定义信息窗体
+</div>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=70d0e910c9b68f064145ea2c2fad7c13"></script>
+<script type="text/javascript">    //地图初始化时，在地图上添加一个marker标记,鼠标点击marker可弹出自定义的信息窗体
+var map = new AMap.Map("container", {
+    resizeEnable: true,
+    center: [116.481181, 39.989792],
+    zoom: 16
+});
+</script>
+</body>
+</html>
