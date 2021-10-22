@@ -1,26 +1,108 @@
-<!-- 重点参数：iconLabel -->
+<!-- 重点参数：renderOptions -->
 <!doctype html>
 <html lang="zh-CN">
 
 <head>
-    <!-- 原始地址：//webapi.amap.com/ui/1.1/ui/overlay/AwesomeMarker/examples/iconLabel.html -->
-    <base href="//webapi.amap.com/ui/1.1/ui/overlay/AwesomeMarker/examples/"/>
+    <!-- 原始地址：//webapi.amap.com/ui/1.1/ui/misc/PathSimplifier/examples/navigators.html -->
+    <base href="//webapi.amap.com/ui/1.1/ui/misc/PathSimplifier/examples/" />
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title>字体样式</title>
+    <title>轨迹巡航控制</title>
     <style>
-        html,
+        #container,
         body,
-        #container {
-            width: 100%;
+        html {
             height: 100%;
-            margin: 0px;
+            width: 100%
+        }
+
+        #loadingTip,
+        #panel {
+            position: absolute;
+            top: 0
+        }
+
+        body,
+        html {
+            margin: 0;
+            font-size: 12px
+        }
+
+        #outer-box {
+            height: 100%;
+            padding-right: 300px;
+        }
+
+        #panel {
+            right: 0;
+            width: 300px;
+            z-index: 999;
+            height: calc(100% - 5px);
+            overflow: hidden;
+            overflow-y: auto
+        }
+
+        #routes-container {
+            height: 1200px;
+            margin-left: 10px
+        }
+
+        #loadingTip {
+            z-index: 9999;
+            left: 0;
+            padding: 3px 10px;
+            background: red;
+            color: #fff;
+            font-size: 13px
+        }
+
+        .route-item {
+            margin-bottom: 10px
+        }
+
+        .route-item pre {
+            margin: 0
+        }
+
+        .route-item h3 {
+            margin: 5px 0;
+            font-size: 14px;
+            cursor: pointer
+        }
+
+        .hide {
+            display: none
+        }
+
+        .speedBox {
+            padding: 5px 0
+        }
+
+        .speedRange {
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            width: 100px
+        }
+
+        .markerInfo {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2px 5px;
+            border: 1px solid #ccc;
+            white-space: nowrap;
         }
     </style>
 </head>
 
 <body>
-<div id="container"></div>
+<div id="outer-box">
+    <div id="container">
+    </div>
+    <div id="panel">
+        <div id="routes-container">
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src='//webapi.amap.com/maps?v=2.0&key=70d0e910c9b68f064145ea2c2fad7c13'></script>
 <!-- UI组件库 1.0 -->
 <script src="//webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
@@ -29,97 +111,287 @@
     var map = new AMap.Map('container', {
         zoom: 4
     });
-    AMapUI.loadUI(['overlay/AwesomeMarker'],
-        function (AwesomeMarker) {
-            //icon的取值请见  http://fontawesome.io/icons/
-            var awIcons = [
-                'address-book',
-                'address-book-o',
-                'address-card',
-                'address-card-o',
-                'adjust',
-                'american-sign-language-interpreting',
-                'anchor',
-                'archive',
-                'area-chart',
-                'arrows',
-                'arrows-h',
-                'arrows-v',
-                'asl-interpreting',
-                'assistive-listening-systems',
-                'asterisk'
-            ];
 
-            var colors = [
-                "#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a",
-                "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94",
-                "#e377c2", "#f7b6d2", "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#9edae5",
-                "#393b79", "#5254a3", "#6b6ecf", "#9c9ede", "#637939", "#8ca252", "#b5cf6b", "#cedb9c", "#8c6d31",
-                "#bd9e39", "#e7ba52", "#e7cb94", "#843c39", "#ad494a", "#d6616b", "#e7969c", "#7b4173", "#a55194", "#ce6dbd", "#de9ed6",
-                "#3182bd", "#6baed6", "#9ecae1", "#c6dbef", "#e6550d", "#fd8d3c", "#fdae6b", "#fdd0a2", "#31a354", "#74c476",
-                "#a1d99b", "#c7e9c0", "#756bb1", "#9e9ac8", "#bcbddc", "#dadaeb", "#636363", "#969696", "#bdbdbd", "#d9d9d9"
-            ];
+    AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) {
 
-            //获取一批grid排布的经纬度
-            var lngLats = getGridLngLats(map.getCenter(), 5, awIcons.length);
+        if (!PathSimplifier.supportCanvas) {
+            alert('当前环境不支持 Canvas！');
+            return;
+        }
 
-            for (var i = 0, len = lngLats.length; i < len; i++) {
+        //just some colors
+        var colors = [
+            "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00",
+            "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707",
+            "#651067", "#329262", "#5574a6", "#3b3eac"
+        ];
 
-                new AwesomeMarker({
-                    //设置awesomeIcon
-                    awesomeIcon: awIcons[i],
+        var pathSimplifierIns = new PathSimplifier({
+            zIndex: 100,
+            //autoSetFitView:false,
+            map: map, //所属的地图实例
 
-                    iconLabel: {
-                        style: {
-                            color: colors[i], //字体颜色
-                            fontSize: 10 + i + 'px' //字号
+            getPath: function(pathData, pathIndex) {
+
+                return pathData.path;
+            },
+            getHoverTitle: function(pathData, pathIndex, pointIndex) {
+
+                if (pointIndex >= 0) {
+                    //point
+                    return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+                }
+
+                return pathData.name + '，点数量' + pathData.path.length;
+            },
+            renderOptions: {
+                pathLineStyle: {
+                    dirArrowStyle: true
+                },
+                getPathStyle: function(pathItem, zoom) {
+
+                    var color = colors[pathItem.pathIndex],
+                        lineWidth = Math.round(4 * Math.pow(1.1, zoom - 3));
+
+                    return {
+                        pathLineStyle: {
+                            strokeStyle: color,
+                            lineWidth: lineWidth
+                        },
+                        pathLineSelectedStyle: {
+                            lineWidth: lineWidth + 2
+                        },
+                        pathNavigatorStyle: {
+                            fillStyle: color
                         }
-                    },
-                    //图标
-                    iconStyle: 'black',
-
-                    map: map,
-                    position: lngLats[i]
-                });
+                    }
+                }
             }
         });
 
-    AMap.plugin(['AMap.ToolBar'], function () {
-        map.addControl(new AMap.ToolBar({
-            map: map
-        }));
-    });
+        var pathNavigs = [];
 
-    /**
-     * 返回一批网格排列的经纬度
+        function getNavg(pathIndex) {
+            if (!pathNavigs[pathIndex]) {
+                //创建一个轨迹巡航器
+                var navgtr = pathSimplifierIns.createPathNavigator(pathIndex, {
+                    loop: true,
+                    speed: parseInt($('#speedInp_' + pathIndex).val())
+                });
 
-     * @param  {AMap.LngLat} center 网格中心
-     * @param  {number} colNum 列数
-     * @param  {number} size  总数
-     * @param  {number} cellX  横向间距
-     * @param  {number} cellY  竖向间距
-     * @return {Array}  返回经纬度数组
-     */
-    function getGridLngLats(center, colNum, size, cellX, cellY) {
-        var pxCenter = map.lnglatToPixel(center);
-        var rowNum = Math.ceil(size / colNum);
-        var startX = pxCenter.getX(),
-            startY = pxCenter.getY();
-        cellX = cellX || 70;
-        cellY = cellY || 70;
-        var lngLats = [];
-        for (var r = 0; r < rowNum; r++) {
-            for (var c = 0; c < colNum; c++) {
-                var x = startX + (c - (colNum - 1) / 2) * (cellX);
-                var y = startY + (r - (rowNum - 1) / 2) * (cellY);
-                lngLats.push(map.pixelToLngLat(new AMap.Pixel(x, y)));
-                if (lngLats.length >= size) {
-                    break;
+                var $markerContent = $('<div class="markerInfo"></div>');
+
+                $markerContent.html(pathSimplifierIns.getPathData(pathIndex).name);
+
+                navgtr.marker = new AMap.Marker({
+                    offset: new AMap.Pixel(12, -10),
+                    content: $markerContent.get(0),
+                    map: map
+                });
+
+                var $msg = $('#routes-container').find('div.route-item[data-idx="' +
+                    pathIndex + '"]').find('.msg');
+
+                navgtr.on('move', function() {
+                    navgtr.marker.setPosition(navgtr.getPosition());
+                });
+
+                navgtr.onDestroy(function() {
+                    pathNavigs[pathIndex] = null;
+                    navgtr.marker.setMap(null);
+                    $msg.html('');
+                });
+
+                navgtr.on('start resume', function() {
+                    navgtr._startTime = Date.now();
+                    navgtr._startDist = this.getMovedDistance();
+                });
+                navgtr.on('stop pause', function() {
+                    navgtr._movedTime = Date.now() - navgtr._startTime;
+                    navgtr._movedDist = this.getMovedDistance() - navgtr._startDist;
+                    navgtr._realSpeed = (navgtr._movedDist / navgtr._movedTime * 3600);
+                    var msgInfo = {
+                        '状态': this.getNaviStatus(),
+                        '设定速度': this.getSpeed() + ' km/h',
+                        '总行进距离': Math.round(this.getMovedDistance() / 1000) + ' km',
+                        '本段行进距离': Math.round(navgtr._movedDist / 1000) + ' km',
+                        '本段耗时': (navgtr._movedTime / 1000) + ' s',
+                        '本段实际速度': Math.round(navgtr._realSpeed) + ' km/h'
+                    };
+                    $msg.html('<pre>' + JSON.stringify(msgInfo, null, 2) + '</pre>');
+
+                    refreshNavgButtons();
+                });
+                navgtr.on('move', function() {
+                    var msgInfo = {
+                        '状态': this.getNaviStatus(),
+                        '设定速度': this.getSpeed() + ' km/h',
+                        '总行进距离': Math.round(this.getMovedDistance() / 1000) + ' km'
+                    };
+                    $msg.html('<pre>' + JSON.stringify(msgInfo, null, 2) + '</pre>');
+                });
+
+                pathNavigs[pathIndex] = navgtr;
+            }
+            return pathNavigs[pathIndex];
+        }
+
+        var navigBtnsConf = [{
+            name: '开始巡航',
+            action: 'start',
+            enableExp: 'navgStatus === "stop" || navgStatus === "pause"'
+        }, {
+            name: '暂停',
+            action: 'pause',
+            enableExp: 'navgStatus === "moving"'
+        }, {
+            name: '恢复',
+            action: 'resume',
+            enableExp: 'navgStatus === "pause"'
+        }, {
+            name: '停止',
+            action: 'stop',
+            enableExp: 'navgStatus === "moving"'
+        }, {
+            name: '销毁',
+            action: 'destroy',
+            enableExp: 'navgExists'
+        }];
+
+        function refreshNavgButtons() {
+
+            $('#routes-container').find('div.route-item').each(function() {
+
+                var pathIndex = parseInt($(this).attr('data-idx'), 0);
+
+                if (pathIndex < 0) {
+                    return;
+                }
+
+                var navgStatus = 'stop',
+                    navgExists = !!pathNavigs[pathIndex];
+
+                if (navgExists) {
+                    navgStatus = pathNavigs[pathIndex].getNaviStatus();
+                }
+
+                $(this).find('.navigBtn').each(function() {
+
+                    var btnIdx = parseInt($(this).attr('data-btnIdx'));
+
+                    $(this).prop('disabled', !eval(navigBtnsConf[btnIdx].enableExp));
+
+                });
+
+            });
+        }
+
+        function initRoutesContainer(data) {
+
+            $('#routes-container').on('click', '.navigBtn', function() {
+
+                var pathIndex = parseInt($(this).closest('.route-item').attr('data-idx'), 0);
+
+                var navg = getNavg(pathIndex);
+
+                navg[$(this).attr('data-act')]();
+
+                refreshNavgButtons();
+            });
+
+            for (var i = 0, len = data.length; i < len; i++) {
+                initRouteItem(data[i], i);
+            }
+
+            refreshNavgButtons();
+        }
+
+        function initRouteItem(pathData, idx) {
+
+            var $routeItem = $('<div class="route-item"></div>');
+
+            $routeItem.attr('data-idx', idx);
+
+            $('<h3/>').css({
+                color: colors[idx]
+            }).html(pathData.name + '(点数： ' + pathData.path.length + ')').appendTo($routeItem).on('click', function() {
+                pathSimplifierIns.setSelectedPathIndex(idx);
+            });
+
+
+            for (var i = 0, len = navigBtnsConf.length; i < len; i++) {
+                $('<button class="navigBtn" data-btnIdx="' + i + '" data-act="' + navigBtnsConf[i].action + '"></button>').html(navigBtnsConf[i].name).appendTo($routeItem);
+            }
+
+            $speedBox = $('<div class="speedBox"></div>').appendTo($routeItem);
+
+            var speedTxt = $('<span><span>').appendTo($speedBox);
+
+            var speedRangeInput = $('<input id="speedInp_' + idx +
+                '" class="speedRange" type="range" min="1000" max="1000000" step="1000" value="100000" />').appendTo($speedBox);
+
+            function updateSpeedTxt() {
+                var speed = parseInt(speedRangeInput.val(), 10);
+
+                speedTxt.html('时速：' + speed + ' km/h');
+
+                if (pathNavigs[idx]) {
+                    pathNavigs[idx].setSpeed(speed);
                 }
             }
+            speedRangeInput.on('change', updateSpeedTxt);
+
+            updateSpeedTxt();
+
+            $speedBox.appendTo($routeItem);
+
+            $('<div class="msg"></div>').appendTo($routeItem);
+
+            $routeItem.appendTo('#routes-container');
         }
-        return lngLats;
-    }
+
+        window.pathSimplifierIns = pathSimplifierIns;
+
+        $('<div id="loadingTip">加载数据，请稍候...</div>').appendTo(document.body);
+
+        $.getJSON('https://a.amap.com/amap-ui/static/data/big-routes.json', function(d) {
+
+            $('#loadingTip').remove();
+
+            var flyRoutes = [];
+
+            for (var i = 0, len = d.length; i < len; i++) {
+
+                if (d[i].name.indexOf('乌鲁木齐') >= 0) {
+
+                    d.splice(i, 0, {
+                        name: '飞行 - ' + d[i].name,
+                        path: PathSimplifier.getGeodesicPath(
+                            d[i].path[0], d[i].path[d[i].path.length - 1], 100)
+                    });
+
+                    i++;
+                    len++;
+                }
+            }
+
+            d.push.apply(d, flyRoutes);
+
+            pathSimplifierIns.setData(d);
+
+            initRoutesContainer(d);
+        });
+
+        pathSimplifierIns.on('selectedPathIndexChanged', function(e, info) {
+
+        });
+
+        pathSimplifierIns.on('pointClick pointMouseover pointMouseout', function(e, record) {
+        });
+
+        pathSimplifierIns.on('pathClick pathMouseover pathMouseout', function(e, record) {
+        });
+    });
 </script>
 </body>
 
