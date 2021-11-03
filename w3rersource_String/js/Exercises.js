@@ -5,6 +5,8 @@ let test1 = (input) => {
     else
         return false;
 };
+
+//注释十一时
 console.log(test1("w3resource"));
 console.log(test1([1, 2, 4, 0]));
 //2.Write a JavaScript function to check whether a string is blank or not.
