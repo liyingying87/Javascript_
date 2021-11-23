@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>haohaonininiin
+        <em>bibibibi</em></h1>
+    <ul>
+        <li>jh</li>
+        <li>haohaohao</li>
+        <li>hi</li>
+    </ul>
+    <p>hao</p>
+    <article>
+        <div>This `div` is first!</div>
+        <div>This <span>nested `span` is first</span>!</div>
+        <div>This <em>nested `em` is first</em>, but this <em>nested `em` is last</em>!</div>
+        <div>This <span>nested `span` gets styled</span>!</div>
+        <b>This `b` qualifies!</b>
+        <div>This is the final `div`.</div>
+    </article>
+    <div>
+        <p class="unique">
+            this
+        </p>
+        <p>
+            tygyh
+        </p>
+        <ul>
+        <li>dfvf</li>
+        <li>dfasf</li>
+        <li>dfdf</li>
+    </ul>
+    </div>
+    <h3>Table of Contents</h3>
+    <ol>
+        <li><a href="#p1">Jump to the first paragraph!</a></li>
+        <li><a href="#p2">Jump to the second paragraph!</a></li>
+        <li><a href="#nowhere">This link goes nowhere,
+            because the target doesn't exist.</a></li>
+    </ol>
+
+    <h3>My Fun Article</h3>
+    <p id="p1">You can target <i>this paragraph</i> using a
+        URL fragment. Click on the link above to try out!</p>
+    <p id="p2">This is <i>another paragraph</i>, also accessible
+        from the links above. Isn't that delightful?</p>
+
+    <a href="https://www.baidu.com/">快来看</a>
+    <a href="https://www.baidu.com/">快来看</a>
+    <p><a href="#">click me</a></p>
+    <input type="text" id="txt">
+    <a href="http://www.w3school.com.cn/" tabindex="2">W3School</a>
+    <a href="http://www.google.com/" tabindex="1">Google</a>
+    <a href="http://www.microsoft.com/" tabindex="3">Microsoft</a>
+    <form>
+        <label for="url_input">Enter a URL:</label>
+        <input type="url" id="url_input" />
+        <br />
+        <br />
+        <label for="email_input">Enter an email address:</label>
+        <input type="email" id="email_input" required/>
+    </form>
+    <form action="" id="form1">
+        <ul>Values between 1 and 10 are valid.
+            <li>
+                <input id="value1" name="value1" type="number" placeholder="1 to 10" min="1" max="10" value="12">
+                <label for="value1">Your value is </label>
+            </li>
+        </ul>
+    </form>
+    <input type="text" value="Type whatever you want here.">
+    <input type="text" value="This is a read-only field." readonly>
+    <p>This is a normal paragraph.</p>
+    <p contenteditable="true">You can edit this paragraph!</p>
+<pre></pre>
+</body>
+<style>
+    p:target {
+        background-color: gold;
+    }
+
+    /* 在目标元素中增加一个伪元素*/
+    p:target::before {
+        font: 70% sans-serif;
+        content: "►";
+        color: limegreen;
+        margin-right: .25em;
+    }
+
+    /*在目标元素中使用italic样式*/
+    p:target i {
+        color: red;
+    }
+    /*
+    input { min-width: 25em; }*/
+    /*input:-moz-read-write { background: cyan; }*/
+    /*input:read-write { background: cyan; }*/
+
+    /*!*p:-moz-read-write { background: lightgray; }*!*/
+    /*p:read-write { background: lightgray; }*/
+    /*!*p[contenteditable="true"] { color: blue; }*!*/
+
+    /*li {*/
+    /*    list-style: none;*/
+    /*    margin-bottom: 1em;*/
+    /*}*/
+
+    /*input {*/
+    /*    border: 1px solid black;*/
+    /*}*/
+
+    /*input:in-range {*/
+    /*    background-color: rgba(0, 255, 0, 0.25);*/
+    /*}*/
+
+    /*input:out-of-range {*/
+    /*    background-color: rgba(255, 0, 0, 0.25);*/
+    /*    border: 2px solid red;*/
+    /*}*/
+
+    /*input:in-range + label::after {*/
+    /*    content: 'okay.';*/
+    /*}*/
+
+    /*input:out-of-range + label::after {*/
+    /*    content: 'out of range!';*/
+    /*}*/
+    /*input:invalid {*/
+    /*    background-color: #ffdddd;*/
+    /*}*/
+
+    /*form:invalid {*/
+    /*    border: 5px solid #ffdddd;*/
+    /*}*/
+
+    /*input:valid {*/
+    /*    background-color: #ddffdd;*/
+    /*}*/
+
+    /*form:valid {*/
+    /*    border: 5px solid #ddffdd;*/
+    /*}*/
+
+    /*input:required {*/
+    /*    border-color: #800000;*/
+    /*    border-width: 3px;*/
+    /*}*/
+
+    /*input:required:invalid {*/
+    /*    border-color: #C00000;*/
+    /*}*/
+    /*body *:hover{background: darkturquoise}*/
+    /*input:focus{*/
+    /*    background: yellow;*/
+    /*}*/
+    /*input:active{*/
+    /*    background: red;*/
+    /*}*/
+    /*a:link{*/
+    /*    color: blue;*/
+    /*}*/
+    /*a:visited{*/
+    /*    color: green;*/
+    /*}*/
+    /*a:hover{*/
+    /*    color: red;*/
+    /*}*/
+    /*a:focus{*/
+    /*    color:black;*/
+    /*}*/
+    /*a:active{*/
+    /*    color: yellow;*/
+    /*}*/
+    p:nth-child(2){
+        font-weight: bold;
+    }
+    li:nth-child(1):nth-last-child(3),
+    li:nth-child(1):nth-last-child(3) ~ li{
+        text-transform: uppercase;
+    }
+    div:only-of-type{
+        color: blue;
+    }
+    div li{
+        background: #0FA0CE;
+    }
+    h1>em{
+        color: #97DB9A;
+    }
+    /*li+li{*/
+    /*    color: #a60000;*/
+    /*}*/
+    article:first-of-type {
+        background-color: pink;
+    }
+</style>
+</html>

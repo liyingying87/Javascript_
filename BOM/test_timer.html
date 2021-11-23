@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 66%;
+            margin: 20px auto;
+        }
+
+        .wrap>img {
+            width: 10%;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var imgS = document.getElementsByTagName('img');
+            var arrDtae = ["./images/0.JPG", "./images/1.JPG", "./images/2.JPG", "./images/3.JPG", "./images/4.JPG",
+                "./images/5.JPG", "./images/6.JPG", "./images/7.JPG", "./images/8.JPG", "./images/9.JPG"
+            ];
+            // for(var i=0; i<10; i++){
+            // 	arrDtae.push('./images/'+i+'.JPG');
+            // }
+            //提前调用
+            time();
+            setInterval(time, 1000);
+
+            function time() {
+                //第一种方法
+                //获取当前时间
+                var oDate = new Date();
+                //单独获取 时 分 秒
+                var h = oDate.getHours();
+                var m = oDate.getMinutes();
+                var s = oDate.getSeconds();
+                //将时分秒拼接为一个时间字符串
+                var str = zero(h) + ':' + zero(m) + ':' + zero(s);
+                // console.log(str);
+                for (var i = 0; i < imgS.length; i++) {
+                    //循环所有图片 设置src属性
+                    // console.log(str.charAt(i));
+                    if (isNaN(str.charAt(i)) == false) {
+                        //如果是数字就放数字图片
+                        imgS[i].src = './images/' + str.charAt(i) + '.JPG';
+                    } else {
+                        //如果是冒号就放冒号图片
+                        imgS[i].src = './images/colon.JPG';
+                    }
+
+                }
+                //第二种方法
+                // var dates = getDate();
+                // var h = dates.hours;
+                // var f = dates.minutes;
+                // var s = dates.seconds;
+                // // console.log(h.toString().charAt(0))
+                // imgS[0].src = arrDtae[h.toString().charAt(0)];
+                // imgS[1].src = arrDtae[h.toString().charAt(1)];
+                // imgS[3].src = arrDtae[f.toString().charAt(0)];
+                // imgS[4].src = arrDtae[f.toString().charAt(1)];
+                // imgS[6].src = arrDtae[s.toString().charAt(0)];
+                // imgS[7].src = arrDtae[s.toString().charAt(1)];
+            }
+
+            //获取时间函数 getDate() 返回年月日周时分秒
+            function getDate() {
+                var dates = new Date();
+                var y = dates.getFullYear();
+                var m = dates.getMonth();
+                var d = dates.getDate();
+                var h = dates.getHours();
+                var mi = dates.getMinutes();
+                var s = dates.getSeconds();
+                var idx = dates.getDay();
+                var week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+                var mday = week[idx];
+
+                return {
+                    year: y,
+                    month: zero(m + 1),
+                    date: zero(d),
+                    day: mday,
+                    hours: zero(h),
+                    minutes: zero(mi),
+                    seconds: zero(s)
+                };
+            }
+            //数值补零（<10补零且不小于0）
+            function zero(n) {
+                if (n > 0) {
+                    return n < 10 ? '0' + n : n;
+                } else {
+                    return n;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <img src="./images/1.JPG" alt="t">
+    <img src="./images/7.JPG" alt="t">
+    <img src="./images/colon.JPG" alt="t">
+    <img src="./images/2.JPG" alt="t">
+    <img src="./images/3.JPG" alt="t">
+    <img src="./images/colon.JPG" alt="t">
+    <img src="./images/2.JPG" alt="t">
+    <img src="./images/4.JPG" alt="t">
+</div>
+</body>
+</html>
